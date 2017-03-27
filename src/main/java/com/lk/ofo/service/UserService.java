@@ -27,4 +27,7 @@ public interface UserService {
 	 * @return
 	 */
 	List<User> getUserList(Integer offset,Integer limit);
+	
+	//修改用户
+	//TODO
 }

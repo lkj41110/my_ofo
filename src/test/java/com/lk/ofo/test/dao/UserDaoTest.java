@@ -37,5 +37,13 @@ public class UserDaoTest {
 		LOG.info(users.toString());
 		LOG.info("-------------");
 	}
+	
+	@Test
+	public void queryUserById(){
+		User user=userDao.queryUserById(1000);
+		LOG.info(user.toString());
+		LOG.info("-------------");
+	}
+	
 
 }

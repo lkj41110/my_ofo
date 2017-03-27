@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.lk.ofo.dto.BaseResult;
+import com.lk.ofo.entity.Bicycle;
 import com.lk.ofo.entity.User;
 import com.lk.ofo.enums.ConstantEnum;
 import com.lk.ofo.service.UserService;
@@ -90,6 +91,18 @@ public class UserController {
 
 	/**
 	 * 修改信息
+	 * @param bicycle
+	 * @return
 	 */
+	@RequestMapping(path = "/update", method = { RequestMethod.POST })
+	@ResponseBody
+	public BaseResult<Object> update(User user){
+		LOG.info("invoke----------/user/update");
+		//TODO
+		if(user==null)
+			return new BaseResult<Object>(false, "用户不能为空");
+		LOG.info(user.toString());
+		return new BaseResult<Object>(true, null); 
+	}
 
 }

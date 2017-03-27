@@ -8,12 +8,19 @@
 		WHERE password=#{password}
 		AND phone=#{phone}
 	</select>
-	
+
 	<select id="queryAllUser" resultType="User">
 		SELECT *
 		FROM _user
-		ORDER BY create_time DESC
+		ORDER BY
+		create_time DESC
 		limit #{offset},#{limit}
+	</select>
+
+	<select id="queryUserById" resultType="User">
+		SELECT *
+		FROM _user
+		WHERE id=#{id}
 	</select>
 
 </mapper>

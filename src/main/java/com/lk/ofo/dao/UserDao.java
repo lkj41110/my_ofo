@@ -19,9 +19,28 @@ public interface UserDao {
 
 	/**
 	 * 查询全部
+	 * 
 	 * @param offset
 	 * @param limit
 	 * @return
 	 */
 	List<User> queryAllUser(@Param("offset") int offset, @Param("limit") int limit);
+
+	/**
+	 * 通过id找用户
+	 * @param id
+	 * @return
+	 */
+	User queryUserById(int id);
+
+	/**
+	 * 通过姓名找用户
+	 */
+	// TODO
+
+	/**
+	 * 修改用户
+	 */
+	// TODO
+
 }
