@@ -5,6 +5,9 @@ var bicyclehandler = {
 		delBtn : function() {
 			return bicyclehandler.URL.getProjectUrl() + '/bicycle/del';
 		},
+		updateBtn : function() {
+			return bicyclehandler.URL.getProjectUrl() + '/bicycle/update';
+		},
 		// 获取项目名字名字
 		getProjectUrl : function() {
 			// 获取主机地址之后的目录，如： uimcardprj/share/meun.jsp
@@ -16,8 +19,8 @@ var bicyclehandler = {
 
 	},
 	// 删除
-	delBtn : function(id,status) {
-		if(status==3){
+	delBtn : function(id, status) {
+		if (status == 3) {
 			alert("此自行车已经删除了");
 			return false;
 		}
@@ -36,6 +39,21 @@ var bicyclehandler = {
 			return true;
 		}
 		return false;
+	},
+	// 修改
+	updateBtn : function() {
+		$.post(bicyclehandler.URL.updateBtn(), {
+			id : $('#id').val,
+			password : $('#password').val,
+			status : $('#status').val
+		}, function(result) {
+			if (result && result['success']) {
+				alert("修改成功");
+				javascript :history.back(-1);
+			} else {
+				alert(result['error']);
+			}
 
+		});
 	}
 }

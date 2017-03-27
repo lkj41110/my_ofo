@@ -20,10 +20,10 @@ import com.lk.ofo.service.BicycleService;
 @RequestMapping("/bicycle")
 public class BicycleController {
 	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
-	
+
 	@Autowired
-    private BicycleService bicycleService;
-	
+	private BicycleService bicycleService;
+
 	/**
 	 * 查看所有的自行车列表
 	 * 
@@ -41,7 +41,9 @@ public class BicycleController {
 		model.addAttribute("bicyclelist", list);
 		return "bicycle/bicyclelist";
 	}
+
 	/**
+	 * 删除
 	 * 
 	 * @param model
 	 * @param offset
@@ -50,13 +52,45 @@ public class BicycleController {
 	 */
 	@RequestMapping(path = "/del", method = { RequestMethod.POST })
 	@ResponseBody
-	public BaseResult<Object> delBicycle(Model model, Integer id) {
+	public BaseResult<Object> delBicycle(Integer id) {
 		LOG.info("invoke----------/bicycle/delBicycle");
-		try{
+		try {
 			bicycleService.delBicycle(id);
-		}catch(BizException e){
-			return new BaseResult<Object>(false, e.getMessage()); 
+		} catch (BizException e) {
+			return new BaseResult<Object>(false, e.getMessage());
 		}
 		return new BaseResult<Object>(true, null);
+	}
+
+	/**
+	 * 修改自行车属性
+	 * 
+	 * @param bicycle
+	 * @return
+	 */
+	@RequestMapping(path = "/update", method = { RequestMethod.POST })
+	public String update(Model model, Bicycle bicycle) {
+		LOG.info("invoke----------/bicycle/update");
+		if (bicycle == null)
+			return "common/error";
+		LOG.info(bicycle.toString());
+		model.addAttribute("bicycle", bicycle);
+		return "bicycle/update";
+	}
+
+	/**
+	 * 跳转
+	 * 
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping(path = "/detail", method = { RequestMethod.GET })
+	public String detail(Model model, Integer id) {
+		LOG.info("invoke----------/bicycle/detail");
+		Bicycle bicycle = bicycleService.getBicycleById(id);
+		if (bicycle == null)
+			return "common/error";
+		model.addAttribute("bicycle", bicycle);
+		return "bicycle/update";
 	}
 }

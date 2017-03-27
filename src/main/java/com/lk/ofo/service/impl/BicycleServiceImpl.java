@@ -39,4 +39,16 @@ public class BicycleServiceImpl implements BicycleService {
 		return true;
 	}
 
+	@Override
+	public Bicycle getBicycleById(Integer id) {
+		return bicycleDao.queryBicycleById(id);
+	}
+
+	@Override
+	public Boolean updateBicycle(Bicycle bicycle) {
+		bicycle.setUpdateTime(new Date());
+		return bicycleDao.updateBicycle(bicycle);
+		
+	}
+
 }

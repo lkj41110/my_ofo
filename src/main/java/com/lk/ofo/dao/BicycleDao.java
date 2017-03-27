@@ -16,6 +16,12 @@ public interface BicycleDao {
 	 */
 	List<Bicycle> queryAllBicycle(@Param("offset") int offset, @Param("limit") int limit);
 
+	/**
+	 * 通过id找bicycle
+	 * 
+	 * @param id
+	 * @return
+	 */
 	Bicycle queryBicycleById(int id);
 	
 	/**

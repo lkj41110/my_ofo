@@ -20,6 +20,13 @@ public interface BicycleService {
 	List<Bicycle> getBicycleList(Integer offset,Integer limit);
 	
 	/**
+	 * 查找自行车
+	 * @param id
+	 * @return
+	 */
+	Bicycle getBicycleById(Integer id);
+	
+	/**
 	 * 查找密码
 	 * @param id
 	 * @return
@@ -32,4 +39,11 @@ public interface BicycleService {
 	 * @return
 	 */
 	Boolean delBicycle(int id);
+	
+	/**
+	 * 修改自行车
+	 * @param bicycle
+	 * @return
+	 */
+	Boolean updateBicycle(Bicycle bicycle);
 }
