@@ -2,6 +2,7 @@ package com.lk.ofo.service;
 
 import java.util.List;
 
+import com.lk.ofo.entity.Bicycle;
 import com.lk.ofo.entity.User;
 
 /**
@@ -27,6 +28,20 @@ public interface UserService {
 	 * @return
 	 */
 	List<User> getUserList(Integer offset,Integer limit);
+	
+	/**
+	 * 通过id查找用户
+	 * @param id
+	 * @return
+	 */
+	User getUserById(Integer id);
+	
+	/**
+	 * 添加用户
+	 * @param user
+	 * @return
+	 */
+	Boolean addUser(User user);
 	
 	//修改用户
 	//TODO

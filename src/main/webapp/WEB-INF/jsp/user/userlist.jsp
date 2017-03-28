@@ -21,6 +21,7 @@
 							<td>用户名</td>
 							<td>手机号</td>
 							<td>积分</td>
+							<td>地区</td>
 							<td>创建时间</td>
 							<td>操作</td>
 						</tr>
@@ -32,7 +33,12 @@
 								<td>${user.name}</td>
 								<td>${user.phone}</td>
 								<td>${user.score}</td>
-								<td><fmt:formatDate value="${user.createTime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+								<td>${user.score}</td>
+								<td><fmt:formatDate value="${user.createTime}"
+										pattern="yyyy-MM-dd HH:mm:ss" /></td>
+								<td><a id="loginBtn" class="btn btn-success"
+									href="${pageContext.request.contextPath}/user/detail?id=${user.id}">查看</a>
+								</td>
 							</tr>
 						</c:forEach>
 					</tbody>

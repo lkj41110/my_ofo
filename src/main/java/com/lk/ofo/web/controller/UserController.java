@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.lk.ofo.dto.BaseResult;
-import com.lk.ofo.entity.Bicycle;
 import com.lk.ofo.entity.User;
 import com.lk.ofo.enums.ConstantEnum;
 import com.lk.ofo.service.UserService;
@@ -67,42 +66,55 @@ public class UserController {
 		LOG.info(user.toString());
 		return new BaseResult<Object>(true, null);
 	}
-	
+
 	/**
 	 * 注销用户
 	 */
 	@RequestMapping(path = "/logout", method = RequestMethod.GET)
-	public String loginout(HttpSession session){
+	public String loginout(HttpSession session) {
 		LOG.info("invoke----------/user/logout");
-		//清楚用户session
+		// 清楚用户session
 		session.invalidate();
 		return "login";
 	}
-	
+
 	/**
 	 * 添加权限
 	 */
 	// TODO
-
 	/**
-	 * 查看用户具体信息
+	 * 查看用户具体信息跳转
+	 * 
+	 * @param id
+	 * @return
 	 */
-	// TODO
+	@RequestMapping(path = "/detail", method = { RequestMethod.GET })
+	public String detail(Model model, Integer id) {
+		LOG.info("invoke----------/user/detail");
+		User user = userService.getUserById(id);
+		if (user == null){
+			model.addAttribute("error", "请查看正确的用户");
+			return "common/error";
+		}
+		model.addAttribute("user", user);
+		return "user/update";
+	}
 
 	/**
 	 * 修改信息
+	 * 
 	 * @param bicycle
 	 * @return
 	 */
 	@RequestMapping(path = "/update", method = { RequestMethod.POST })
 	@ResponseBody
-	public BaseResult<Object> update(User user){
+	public BaseResult<Object> update(User user) {
 		LOG.info("invoke----------/user/update");
-		//TODO
-		if(user==null)
+		// TODO
+		if (user == null)
 			return new BaseResult<Object>(false, "用户不能为空");
 		LOG.info(user.toString());
-		return new BaseResult<Object>(true, null); 
+		return new BaseResult<Object>(true, null);
 	}
 
 }
