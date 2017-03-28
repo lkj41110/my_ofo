@@ -22,7 +22,7 @@
 				</a>
 					<ul class="dropdown-menu">
 						<li><a href="${pageContext.request.contextPath}/bicycle/list">自行车列表</a></li>
-						<li><a href="#">添加自行车</a></li>
+						<li><a href="#">添加用户</a></li>
 					</ul></li>
 			</ul>
 			<div>

@@ -63,6 +63,26 @@ public class BicycleController {
 	}
 
 	/**
+	 * 添加
+	 * 
+	 * @param model
+	 * @param offset
+	 * @param limit
+	 * @return
+	 */
+	@RequestMapping(path = "/add", method = { RequestMethod.POST })
+	@ResponseBody
+	public BaseResult<Object> addBicycle(Bicycle bicycle) {
+		LOG.info("invoke----------/bicycle/addBicycle" + bicycle);
+		try {
+			// TODO 添加自行车
+		} catch (BizException e) {
+			return new BaseResult<Object>(false, e.getMessage());
+		}
+		return new BaseResult<Object>(true, null);
+	}
+
+	/**
 	 * 修改自行车属性
 	 * 
 	 * @param bicycle
@@ -74,12 +94,13 @@ public class BicycleController {
 		if (bicycle == null)
 			return "common/error";
 		LOG.info(bicycle.toString());
+		bicycleService.updateBicycle(bicycle);
 		model.addAttribute("bicycle", bicycle);
 		return "bicycle/update";
 	}
 
 	/**
-	 * 跳转
+	 * 跳转详细信息
 	 * 
 	 * @param id
 	 * @return
@@ -88,9 +109,12 @@ public class BicycleController {
 	public String detail(Model model, Integer id) {
 		LOG.info("invoke----------/bicycle/detail");
 		Bicycle bicycle = bicycleService.getBicycleById(id);
-		if (bicycle == null)
+		if (bicycle == null) {
+			model.addAttribute("error", "请查看正确的自行车");
 			return "common/error";
+		}
 		model.addAttribute("bicycle", bicycle);
 		return "bicycle/update";
 	}
+
 }

@@ -3,5 +3,5 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>错误页面</title> 错误页面
+<title>错误页面</title> ${error}
 </html>

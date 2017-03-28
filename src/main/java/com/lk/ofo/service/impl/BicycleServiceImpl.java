@@ -51,4 +51,10 @@ public class BicycleServiceImpl implements BicycleService {
 		
 	}
 
+	@Override
+	public Boolean addBicycle(Bicycle bicycle) {
+		//TODO 添加自行车
+		return true;
+	}
+
 }

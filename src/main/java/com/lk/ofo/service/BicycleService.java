@@ -41,6 +41,13 @@ public interface BicycleService {
 	Boolean delBicycle(int id);
 	
 	/**
+	 * 添加自行车
+	 * @param bicycle
+	 * @return
+	 */
+	Boolean addBicycle(Bicycle bicycle);
+	
+	/**
 	 * 修改自行车
 	 * @param bicycle
 	 * @return

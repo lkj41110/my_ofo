@@ -21,6 +21,7 @@
 							<td>自行车密码</td>
 							<td>状态</td>
 							<td>创建时间</td>
+							<td>地区</td>
 							<td>操作</td>
 						</tr>
 					</thead>
