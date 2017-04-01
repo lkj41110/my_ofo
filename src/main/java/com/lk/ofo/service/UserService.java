@@ -2,7 +2,6 @@ package com.lk.ofo.service;
 
 import java.util.List;
 
-import com.lk.ofo.entity.Bicycle;
 import com.lk.ofo.entity.User;
 
 /**

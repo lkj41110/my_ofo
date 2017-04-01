@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 
 /**
  * 字符串工具类
+ * 
  * @author lkj41110
  * @version time：2017年3月28日 下午10:39:41
  */
@@ -33,4 +34,12 @@ public class StringUtils {
 			}
 		}
 	}
+
+	/** 坐标检验 在杭州 */
+	public static boolean isInHangZHou(Double x, Double y) {
+		if (x >= 118.35 && x < 120.5 && y > 29.183 && y < 20.55)
+			return true;
+		return false;
+	}
+
 }

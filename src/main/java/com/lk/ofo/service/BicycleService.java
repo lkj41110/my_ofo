@@ -12,7 +12,7 @@ import com.lk.ofo.entity.Bicycle;
  */
 public interface BicycleService {
 	/**
-	 * 查看全部用户
+	 * 查看全部自行车
 	 * @param offset
 	 * @param limit
 	 * @return
