@@ -19,6 +19,7 @@
 					method="post">
 					<input type="hidden" name="addressX" value="${bicycle.addressX}">
 					<input type="hidden" name="addressY" value="${bicycle.addressY}">
+					<input type="hidden" name="createTime" value="${bicycle.createTime}">
 					<div class="form-group">
 						<label for="firstname" class="col-sm-2 control-label">id</label>
 						<div class="col-sm-4">
@@ -61,7 +62,7 @@
 					</div>
 					<div class="form-group">
 						<a id="loginBtn" class="btn btn-success col-sm-offset-2 col-sm-4"
-							href="${pageContext.request.contextPath}/bicycle/detail?id=${bicycle.id}">地图查看</a>
+							href="${pageContext.request.contextPath}/map/byXY?addressX=${bicycle.addressX}&addressY=${bicycle.addressY}">地图查看</a>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-offset-3 col-sm-2">

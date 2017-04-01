@@ -13,7 +13,7 @@
 				</a>
 					<ul class="dropdown-menu">
 						<li><a href="${pageContext.request.contextPath}/user/list">用户列表</a></li>
-						<li><a href="#">添加自行车</a></li>
+						<li><a href="#">添加用户</a></li>
 					</ul></li>
 
 				<!--自行车 -->
@@ -22,7 +22,17 @@
 				</a>
 					<ul class="dropdown-menu">
 						<li><a href="${pageContext.request.contextPath}/bicycle/list">自行车列表</a></li>
-						<li><a href="#">添加用户</a></li>
+						<li><a href="#">添加自行车</a></li>
+						<li><a href="#">设置价格</a></li>
+					</ul></li>
+
+				<!--自行车 -->
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown">订单管理<b class="caret"></b>
+				</a>
+					<ul class="dropdown-menu">
+						<li><a href="${pageContext.request.contextPath}/order/list">订单列表</a></li>
+						<li><a href="#">手动订单</a></li>
 					</ul></li>
 			</ul>
 			<div>
