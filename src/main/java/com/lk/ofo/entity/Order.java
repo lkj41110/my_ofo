@@ -1,82 +1,93 @@
 package com.lk.ofo.entity;
 
 import java.util.Date;
-
 /**
- * 订单
- * @author  yingjun
- *
+ * @author lkj41110
+ * @version time：2017年3月30日 下午9:06:11
  */
-public class Order {
+public class Order extends Basis{
+	private int id;
+	private int userId;
+	private int bicycleId;
+	private Date startTime;
+	private Date endTime;
+	private double cost;
+	private String start_X;
+	private String start_y;
+	private String end_X;
+	private String end_y;
+	private String status;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+	public int getBicycleId() {
+		return bicycleId;
+	}
+	public void setBicycleId(int bicycleId) {
+		this.bicycleId = bicycleId;
+	}
 	
-	private long orderId;
-	
-	private User user;
-	
-	private long goodsId;
-	
-	private String title;
-	
-	private Date createTime;
-
-
-	public User getUser() {
-		return user;
+	public Date getStartTime() {
+		return startTime;
 	}
-
-
-	public void setUser(User user) {
-		this.user = user;
+	public void setStartTime(Date startTime) {
+		this.startTime = startTime;
 	}
-
-
-	public long getOrderId() {
-		return orderId;
+	public Date getEndTime() {
+		return endTime;
 	}
-
-
-	public void setOrderId(long orderId) {
-		this.orderId = orderId;
+	public void setEndTime(Date endTime) {
+		this.endTime = endTime;
 	}
-
-
-	public String getTitle() {
-		return title;
+	public double getCost() {
+		return cost;
 	}
-
-
-	public void setTitle(String title) {
-		this.title = title;
+	public void setCost(double cost) {
+		this.cost = cost;
 	}
-
-
-	public Date getCreateTime() {
-		return createTime;
+	public String getStart_X() {
+		return start_X;
 	}
-
-
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
+	public void setStart_X(String start_X) {
+		this.start_X = start_X;
 	}
-
-
-	public long getGoodsId() {
-		return goodsId;
+	public String getStart_y() {
+		return start_y;
 	}
-
-
-	public void setGoodsId(long goodsId) {
-		this.goodsId = goodsId;
+	public void setStart_y(String start_y) {
+		this.start_y = start_y;
 	}
-
-
+	public String getEnd_X() {
+		return end_X;
+	}
+	public void setEnd_X(String end_X) {
+		this.end_X = end_X;
+	}
+	public String getEnd_y() {
+		return end_y;
+	}
+	public void setEnd_y(String end_y) {
+		this.end_y = end_y;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	@Override
 	public String toString() {
-		return "Order [user=" + user + ", orderId=" + orderId + ", goodsId=" + goodsId + ", title=" + title + ", createTime=" + createTime + "]";
+		return "Order [id=" + id + ", userId=" + userId + ", bicycleId=" + bicycleId + ", status=" + status + "]";
 	}
-
-
-
 	
 	
 }
