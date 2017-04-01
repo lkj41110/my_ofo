@@ -102,7 +102,6 @@ public class UserController {
 
 	/**
 	 * 修改信息
-	 * 
 	 * @param bicycle
 	 * @return
 	 */
@@ -114,6 +113,18 @@ public class UserController {
 		if (user == null)
 			return new BaseResult<Object>(false, "用户不能为空");
 		LOG.info(user.toString());
+		return new BaseResult<Object>(true, null);
+	}
+	
+	/**
+	 * 修改密码
+	 * @param bicycle
+	 * @return
+	 */
+	@RequestMapping(path = "/updatePassword", method = { RequestMethod.POST })
+	@ResponseBody
+	public BaseResult<Object> updatePassword(User user) {
+		//TUDO
 		return new BaseResult<Object>(true, null);
 	}
 
