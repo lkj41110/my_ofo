@@ -33,6 +33,26 @@
 		(#{fromUser},#{toUser},#{content},#{title})
     </insert>
 
+	<delete id="delete">
+		DELETE
+		FROM _message
+		WHERE
+		id=#{id}
+	</delete>
+
+
+	<!-- 修改车辆 -->
+	<update id="update">
+		UPDATE
+		_message SET
+		status=#{status},
+		<if test="delTime!=null">
+			del_Time = #{delTime},
+		</if>
+		update_Time=#{updateTime}
+		WHERE
+		id=#{id}
+	</update>
 
 
 </mapper>

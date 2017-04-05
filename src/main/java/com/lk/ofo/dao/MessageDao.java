@@ -28,7 +28,7 @@ public interface MessageDao {
      * @param status
      * @return
      */
-    List<Message> queryAllMessage2(@Param("offset") int offset, @Param("limit") int limit, @Param("to_user") int to_user, @Param("status") int status);
+    List<Message> queryAllMessage2(@Param("offset") int offset, @Param("limit") int limit, @Param("to_user") int to_user, @Param("status") String status);
 
     /**
      * 通过id
@@ -45,5 +45,21 @@ public interface MessageDao {
      * @return
      */
     boolean addMessage(Message message);
+
+    /**
+     * 删除message
+     *
+     * @param id
+     * @return
+     */
+    boolean delete(int id);
+
+    /**
+     * 修改消息
+     *
+     * @param message
+     * @return
+     */
+    boolean update(Message message);
 
 }

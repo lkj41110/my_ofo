@@ -16,7 +16,7 @@ public interface MessageService {
      * @param limit
      * @return
      */
-    List<MessageVO> getMessageList(int offset, int limit, int id, int state);
+    List<MessageVO> getMessageList(int offset, int limit, int id, String state);
 
     /**
      * 通过id查找
@@ -25,4 +25,30 @@ public interface MessageService {
      * @return
      */
     Message getMessageById(Integer id);
+
+    /**
+     * 真正的删除对象
+     *
+     * @param to_id 谁的信息
+     * @param id    消息的id
+     * @return
+     */
+    Boolean realDeleteMessage(int to_id, int id);
+
+    /**
+     *不是真正的删除对象，把对象放入垃圾箱
+     *
+     *
+     * @param to_id
+     * @param id
+     * @return
+     */
+    Boolean notRealDeleteMessage(int to_id, int id);
+
+    /**
+     * 添加消息
+     * @param message
+     * @return
+     */
+    Boolean addMessage(Message message);
 }

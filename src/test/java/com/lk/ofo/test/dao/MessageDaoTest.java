@@ -31,7 +31,7 @@ public class MessageDaoTest {
         List<Message> messages = messageDao.queryAllMessage(0, 10,1001);
         LOG.info(messages.toString());
         LOG.info("-------------");
-        messages = messageDao.queryAllMessage2(0, 10, 1002,1);
+        messages = messageDao.queryAllMessage2(0, 10, 1002,"1");
         LOG.info(messages.toString());
         LOG.info("-------------");
     }
@@ -47,6 +47,11 @@ public class MessageDaoTest {
     public void addMessageTest(){
         Message message = new Message(1002,1001,"测试","ce是");
         boolean flag=messageDao.addMessage(message);
-
     }
+
+    @Test
+    public void deleteTest(){
+       boolean flag = messageDao.delete(1004);
+    }
+
 }

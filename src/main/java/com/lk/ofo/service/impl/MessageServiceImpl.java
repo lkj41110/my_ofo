@@ -25,12 +25,12 @@ public class MessageServiceImpl implements MessageService {
     private UserDao userDao;
 
     @Override
-    public List<MessageVO> getMessageList(int offset, int limit, int to_user, int status) {
+    public List<MessageVO> getMessageList(int offset, int limit, int to_user, String status) {
         List<Message> messages = null;
         //查询全部
-        if (status == ConstantEnum.MESSSAGE_ALL) {
+        if (status.equals(ConstantEnum.MESSSAGE_ALL)) {
             messages = messageDao.queryAllMessage(offset, limit, to_user);
-        }else{
+        } else {
             messages = messageDao.queryAllMessage2(offset, limit, to_user, status);
         }
         List<MessageVO> messageVOS = new LinkedList<>();
@@ -50,4 +50,32 @@ public class MessageServiceImpl implements MessageService {
     public Message getMessageById(Integer id) {
         return messageDao.queryMessageById(id);
     }
+
+    @Override
+    public Boolean notRealDeleteMessage(int to_id, int id) {
+        Message message = messageDao.queryMessageById(id);
+        if (message == null && message.getToUser() == to_id) {
+            return false;
+        }
+        message.setStatus(ConstantEnum.MESSSAGE_DELETE);
+        message.setDelTime(new Date());
+        message.setUpdateTime(new Date());
+        return messageDao.update(message);
+    }
+
+    @Override
+    public Boolean addMessage(Message message) {
+        return messageDao.addMessage(message);
+    }
+
+    @Override
+    public Boolean realDeleteMessage(int to_id, int id) {
+        Message message = messageDao.queryMessageById(id);
+        if (message == null && message.getToUser() == to_id) {
+            return false;
+        }
+        return messageDao.delete(id);
+    }
+
+
 }

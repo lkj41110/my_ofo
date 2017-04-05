@@ -12,6 +12,7 @@ public class Message extends Basis {
     private int toUser;
     private String content;
     private String title;
+    private String status;
 
     public Message() {
     }
@@ -61,6 +62,14 @@ public class Message extends Basis {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     @Override
