@@ -102,7 +102,7 @@ public class UserController {
 
 	/**
 	 * 修改信息
-	 * @param bicycle
+	 * @param
 	 * @return
 	 */
 	@RequestMapping(path = "/update", method = { RequestMethod.POST })
@@ -118,7 +118,7 @@ public class UserController {
 	
 	/**
 	 * 修改密码
-	 * @param bicycle
+	 * @param
 	 * @return
 	 */
 	@RequestMapping(path = "/updatePassword", method = { RequestMethod.POST })

@@ -36,6 +36,7 @@
 										test="${bicycle.status==4}">未使用</c:if></td>
 								<td><fmt:formatDate value="${user.createTime}"
 										pattern="yyyy-MM-dd HH:mm:ss" /></td>
+								<td></td>
 								<td><a id="loginBtn" class="btn btn-success"
 									href="${pageContext.request.contextPath}/bicycle/detail?id=${bicycle.id}">修改</a>
 									<button type="button" id="loginBtn" class="btn btn-success"

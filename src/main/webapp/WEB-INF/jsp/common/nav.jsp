@@ -35,13 +35,14 @@
 						<li><a href="#">手动订单</a></li>
 					</ul></li>
 
-                <!--消息 作为首页-->
+                <!--设置-->
                 <li class="dropdown"><a href="#" class="dropdown-toggle"
-                                        data-toggle="dropdown">消息管理<b class="caret"></b>
+                                        data-toggle="dropdown">日常设置<b class="caret"></b>
                 </a>
                     <ul class="dropdown-menu">
-                        <li><a href="${pageContext.request.contextPath}/order/list">消息列表</a></li>
-                        <li><a href="#">手动订单</a></li>
+                        <li><a href="${pageContext.request.contextPath}/order/list">价格设置</a></li>
+                        <li><a href="${pageContext.request.contextPath}/order/list">内容发布</a></li>
+                        <li><a href="${pageContext.request.contextPath}/order/list">app内容设置</a></li>
                     </ul></li>
 
 
