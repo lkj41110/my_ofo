@@ -27,7 +27,6 @@ public class UserDaoTest {
 	@Test
 	public void queryUserByPhoneAndPassword() {
 		User user=userDao.queryUserByPhoneAndPassword("18758114722", "123456");
-		LOG.info(user.toString());
 		LOG.info("-------------");
 	}
 
@@ -44,6 +43,17 @@ public class UserDaoTest {
 		LOG.info(user.toString());
 		LOG.info("-------------");
 	}
-	
+
+	@Test
+	public void update(){
+		User user=userDao.queryUserById(1000);
+		user.setPassword("12345");
+		userDao.update(user);
+		LOG.info(user.toString());
+		LOG.info("-------------");
+	}
+
+
+
 
 }
