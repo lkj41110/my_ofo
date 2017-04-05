@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -53,6 +54,7 @@ body, html {
 		if (data.status === 0) {
 			var marker = new BMap.Marker(data.points[0]);
 			bm.addOverlay(marker);
+			//TODO 传入名字
 			var label = new BMap.Label("转换后的百度坐标（正确）", {
 				offset : new BMap.Size(20, -10)
 			});
