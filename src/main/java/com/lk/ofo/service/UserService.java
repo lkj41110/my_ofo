@@ -41,7 +41,11 @@ public interface UserService {
 	 * @return
 	 */
 	Boolean addUser(User user);
-	
-	//修改用户
-	//TODO
+
+	/**
+	 * 修改用户
+	 * @param user
+	 * @return
+	 */
+	Boolean update(User user);
 }

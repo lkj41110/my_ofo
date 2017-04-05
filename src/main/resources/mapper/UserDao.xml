@@ -23,4 +23,16 @@
 		WHERE id=#{id}
 	</select>
 
+	<update id="update">
+		UPDATE
+		_user SET
+		password = #{password},
+		<if test="delTime!=null">
+			del_Time = #{delTime},
+		</if>
+		update_Time=#{updateTime}
+		WHERE
+		id=#{id}
+	</update>
+
 </mapper>
