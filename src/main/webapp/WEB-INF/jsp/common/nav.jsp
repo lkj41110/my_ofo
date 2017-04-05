@@ -26,7 +26,7 @@
 						<li><a href="#">设置价格</a></li>
 					</ul></li>
 
-				<!--自行车 -->
+				<!--订单 -->
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown">订单管理<b class="caret"></b>
 				</a>
@@ -34,6 +34,17 @@
 						<li><a href="${pageContext.request.contextPath}/order/list">订单列表</a></li>
 						<li><a href="#">手动订单</a></li>
 					</ul></li>
+
+                <!--消息 作为首页-->
+                <li class="dropdown"><a href="#" class="dropdown-toggle"
+                                        data-toggle="dropdown">消息管理<b class="caret"></b>
+                </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="${pageContext.request.contextPath}/order/list">消息列表</a></li>
+                        <li><a href="#">手动订单</a></li>
+                    </ul></li>
+
+
 			</ul>
 			<div>
 				<form class="navbar-form navbar-left" role="search">
@@ -52,8 +63,9 @@
 						class="caret"></b>
 				</a>
 					<ul class="dropdown-menu">
-						<li><a href="#">修改资料</a></li>
-						<li><a href="#">修改密码</a></li>
+						<li><a href="${pageContext.request.contextPath}/message/list">我的消息</a></li>
+						<li><a href="${pageContext.request.contextPath}/own/updatep">修改密码</a></li>
+						<li><a href="${pageContext.request.contextPath}/own/updatez">修改资料</a></li>
 						<li class="divider"></li>
 						<li><a href="${pageContext.request.contextPath}/user/logout">注销</a></li>
 					</ul></li>
