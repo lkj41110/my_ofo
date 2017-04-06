@@ -134,8 +134,8 @@ VALUES
 INSERT INTO
   _message (from_user, to_user, title, content)
 VALUES
-  (1000,1001,'标题','收到消息了没'),
-  (1001,1002,'标题2','收到消息了没2');
+  (1000,1000,'标题','收到消息了没asdasdsadjsldkjskldjlkasjdlkjsaldjslkadjlsjldjzcxmncmzxbcmejhwieruerweeeeeee'),
+  (1001,1000,'标题2','收到消息了没2aaad尿素氮你会看见俺说的安好就好卡仕达');
 
 -- 插入订单表
 INSERT INTO
