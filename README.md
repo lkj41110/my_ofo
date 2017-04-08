@@ -2,7 +2,7 @@
 
 ### 项目使用技术
 
-- 使用框架：springMVC+Spring+Mybatis
+- springMVC+Spring+Mybatis
 - Maven
 - Spring（IOC DI AOP 声明式事务处理）
 - SpringMVC（支持Restful风格）
@@ -15,11 +15,9 @@
 - [Druid（数据源配置 sql防注入 sql性能监控)](http://wosyingjun.iteye.com/blog/2306139)
 - 统一的异常处理
 - JSP JSTL JavaScript
-- Sping Shiro权限控制（待完善）
+
 ### 存在的问题
-
-========
-
+----
 - 前端与后端的交互方式没有规定好，目前使用的交互方式以下几种，导致controller的返回数据格式不同意，访问方式也不统一，使得开发效率变低
 1. 一种是直接通过访问controller层来提交表单或者通过通过controller跳转到指定jsp
 2. 一种是通过js实现post方式提交，返回json数据  
