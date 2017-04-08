@@ -32,7 +32,7 @@ CREATE TABLE _user (
 
 -- 自行车表
 CREATE TABLE _bicycle (
-  `id`          INT         NOT NULL AUTO_INCREMENT
+  `id`          INT         NOT NULL
   COMMENT '自行车ID',
   `address_X`   VARCHAR(10) COMMENT '经度X',
   `address_Y`   VARCHAR(10) COMMENT '维度Y',
@@ -48,7 +48,6 @@ CREATE TABLE _bicycle (
   PRIMARY KEY (`id`)
 )
   ENGINE = INNODB
-  AUTO_INCREMENT = 1000
   DEFAULT CHARSET = utf8
   COMMENT = '自行车表';
 
@@ -123,12 +122,12 @@ VALUES
 
 -- 自行车表
 INSERT INTO
-  _bicycle (password)
+  _bicycle (id,password)
 VALUES
-  ('1111'),
-  ('2222'),
-  ('3333'),
-  ('2444');
+  ('1001','1111'),
+  ('1002','2222'),
+  ('1003','3333'),
+  ('1004','2444');
 
 -- 插入消息列表
 INSERT INTO
