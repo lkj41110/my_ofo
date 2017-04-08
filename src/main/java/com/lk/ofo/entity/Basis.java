@@ -24,5 +24,13 @@ public class Basis {
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
 	}
-	
+
+	public Basis() {
+	}
+
+	public Basis(Date createTime, Date delTime, Date updateTime) {
+		this.createTime = createTime;
+		this.delTime = delTime;
+		this.updateTime = updateTime;
+	}
 }
