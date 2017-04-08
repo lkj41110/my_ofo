@@ -19,12 +19,12 @@ public interface MessageService {
     List<MessageVO> getMessageList(int offset, int limit, int id, String state);
 
     /**
-     * 通过id查找
+     * 查看消息具体信息
      *
      * @param id
      * @return
      */
-    Message getMessageById(Integer id);
+    Message readMessageDetail(Integer id);
 
     /**
      * 真正的删除对象

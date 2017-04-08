@@ -47,7 +47,12 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
-    public Message getMessageById(Integer id) {
+    public Message readMessageDetail(Integer id) {
+        Message message=messageDao.queryMessageById(id);
+        if(message.getStatus().equals(ConstantEnum.MESSSAGE_NOT_READ)){
+            message.setStatus(ConstantEnum.MESSSAGE_READ);
+        }
+        messageDao.update(message);
         return messageDao.queryMessageById(id);
     }
 

@@ -22,10 +22,6 @@
                     </label>
                 </div>
                 <div class="form-group div">
-                    <a class="btn btn-success"
-                       href="${pageContext.request.contextPath}/message/detail?id=${messageVO.message.id}">
-                        查看
-                    </a>
                     <button class="btn btn-success"
                             onclick="messagehandler.deleteBtn(${messageVO.message.id},${messageVO.message.status});">
                         回复

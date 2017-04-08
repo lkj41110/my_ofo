@@ -43,17 +43,16 @@ public class MessageController {
      * @return
      */
     @RequestMapping(path = "/list", method = {RequestMethod.GET})
-    public String list(HttpSession session, Model model, Integer offset, Integer limit) {
+    public String list(HttpSession session, Model model, Integer offset, Integer limit,String status) {
         LOG.info("invoke----------/message/list");
         User user = (User) session.getAttribute("user");
         if (user == null) {
             model.addAttribute("error", "请先登入");
             return "common/error";
         }
-
         offset = offset == null ? 0 : offset;// 默认便宜0
         limit = limit == null ? 50 : limit;// 默认展示50条
-        List<MessageVO> notRead = messageService.getMessageList(offset, limit, user.getId(), ConstantEnum.MESSSAGE_ALL);
+        List<MessageVO> notRead = messageService.getMessageList(offset, limit, user.getId(), status);
         model.addAttribute("messageList", notRead);
         return "message/messagelist";
     }
@@ -111,7 +110,7 @@ public class MessageController {
             model.addAttribute("error", "未登入，请先登入");
             return "common/error";
         }
-        Message message = messageService.getMessageById(id);
+        Message message = messageService.readMessageDetail(id);
         if(message!=null)
             model.addAttribute("message",message);
         else{
