@@ -49,6 +49,10 @@ public class BicycleDaoTest {
 		Boolean flag=bicycleDao.updateBicycle(bicycle);
 		LOG.info(flag.toString());
 	}
-	
+
+
+	@Test
+	public void addBicycle(){
+	}
 
 }

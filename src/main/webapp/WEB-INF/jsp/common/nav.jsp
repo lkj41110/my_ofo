@@ -14,6 +14,7 @@
 					<ul class="dropdown-menu">
 						<li><a href="${pageContext.request.contextPath}/user/list">用户列表</a></li>
 						<li><a href="#">添加用户</a></li>
+						<li><a href="#">黑名单</a></li>
 					</ul></li>
 
 				<!--自行车 -->
@@ -22,7 +23,7 @@
 				</a>
 					<ul class="dropdown-menu">
 						<li><a href="${pageContext.request.contextPath}/bicycle/list">自行车列表</a></li>
-						<li><a href="#">添加自行车</a></li>
+						<li><a href="${pageContext.request.contextPath}/bicycle/add1">添加自行车</a></li>
 						<li><a href="#">设置价格</a></li>
 					</ul></li>
 
@@ -43,6 +44,7 @@
                         <li><a href="${pageContext.request.contextPath}/order/list">价格设置</a></li>
                         <li><a href="${pageContext.request.contextPath}/order/list">内容发布</a></li>
                         <li><a href="${pageContext.request.contextPath}/order/list">app内容设置</a></li>
+                        <li><a href="${pageContext.request.contextPath}/order/list">接口查看</a></li>
                     </ul></li>
 
 
@@ -64,7 +66,7 @@
 						class="caret"></b>
 				</a>
 					<ul class="dropdown-menu">
-						<li><a href="${pageContext.request.contextPath}/message/list">我的消息</a></li>
+						<li><a href="${pageContext.request.contextPath}/message/list?status=3">我的消息</a></li>
 						<li><a href="${pageContext.request.contextPath}/own/updatep">修改密码</a></li>
 						<li><a href="${pageContext.request.contextPath}/own/updatez">修改资料</a></li>
 						<li class="divider"></li>
