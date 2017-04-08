@@ -34,11 +34,9 @@ public interface BicycleDao {
 
 	/**
 	 * 添加自行车
-	 * @param id
-	 * @param password
 	 * @return
 	 */
-	Boolean addBicycle(@Param("id") int id, @Param("password") String password);
+	Boolean addBicycle(Bicycle bicycle);
 	
 	/**
 	 * 修改自行车的内容

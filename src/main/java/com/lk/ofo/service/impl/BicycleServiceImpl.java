@@ -1,8 +1,10 @@
 package com.lk.ofo.service.impl;
 
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
+import com.lk.ofo.exception.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -56,5 +58,23 @@ public class BicycleServiceImpl implements BicycleService {
 		//TODO 添加自行车
 		return true;
 	}
+
+	@Override
+	public void addBicycle(List bicycles) {
+		if(bicycles.size()==0){
+			throw new ServiceException("添加列表为空");
+		}
+		Iterator<Bicycle> iterator=bicycles.iterator();
+		while(iterator.hasNext()){
+			Bicycle bicycle=iterator.next();
+			//判断id是否存在
+			Bicycle bicycle1=bicycleDao.queryBicycleById(bicycle.getId());
+			if(bicycle1!=null){
+				throw new ServiceException(bicycle.getId()+"车牌号已经纯在");
+			}
+			bicycleDao.addBicycle(bicycle);
+		}
+	}
+
 
 }

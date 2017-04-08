@@ -34,12 +34,12 @@
 										test="${bicycle.status==2}">出现故障</c:if> <c:if
 										test="${bicycle.status==3}">停止使用</c:if> <c:if
 										test="${bicycle.status==4}">未使用</c:if></td>
-								<td><fmt:formatDate value="${user.createTime}"
+								<td><fmt:formatDate value="${bicycle.createTime}"
 										pattern="yyyy-MM-dd HH:mm:ss" /></td>
 								<td></td>
 								<td><a id="loginBtn" class="btn btn-success"
 									href="${pageContext.request.contextPath}/bicycle/detail?id=${bicycle.id}">修改</a>
-									<button type="button" id="loginBtn" class="btn btn-success"
+									<button type="button" class="btn btn-success"
 										onclick="bicyclehandler.delBtn(${bicycle.id},${bicycle.status});">
 										删除</button></td>
 							</tr>

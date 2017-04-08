@@ -46,6 +46,13 @@ public interface BicycleService {
 	 * @return
 	 */
 	Boolean addBicycle(Bicycle bicycle);
+
+	/**
+	 * 添加多亮自行车
+	 * @param bicycle
+	 * @returnList
+	 */
+	void addBicycle(List bicycle);
 	
 	/**
 	 * 修改自行车
