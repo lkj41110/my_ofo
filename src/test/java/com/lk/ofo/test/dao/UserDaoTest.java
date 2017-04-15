@@ -2,6 +2,8 @@ package com.lk.ofo.test.dao;
 
 import java.util.List;
 
+import com.lk.ofo.entity.User2;
+import com.lk.ofo.util.StringUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -45,13 +47,30 @@ public class UserDaoTest {
 	}
 
 	@Test
+	public void queryUser2ById(){
+		User2 user=userDao.queryUser2ById(1000);
+		LOG.info(user.toString());
+		LOG.info("-------------");
+	}
+
+	@Test
 	public void update(){
 		User user=userDao.queryUserById(1000);
-		user.setPassword("12345");
+		user.setName("1232131");
+//		user.setPassword("12345");
 		userDao.update(user);
 		LOG.info(user.toString());
 		LOG.info("-------------");
 	}
+
+	@Test
+	public void  numberTest(){
+		Boolean a= StringUtils.isNumeric("123");
+		Boolean b=StringUtils.isNumeric("123.123");
+	}
+
+
+
 
 
 

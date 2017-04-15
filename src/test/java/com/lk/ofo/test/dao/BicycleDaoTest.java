@@ -31,6 +31,13 @@ public class BicycleDaoTest {
 		LOG.info(bicycles.toString());
 		LOG.info("-------------");
 	}
+
+	@Test
+	public void queryStatusBicycle(){
+		List<Bicycle> bicycles=bicycleDao.queryStatusBicycle(0,15,"2");
+		LOG.info(bicycles.toString());
+		LOG.info("-------------");
+	}
 	
 	@Test
 	public void getPassword(){
