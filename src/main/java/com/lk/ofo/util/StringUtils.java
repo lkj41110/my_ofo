@@ -48,4 +48,38 @@ public class StringUtils {
         return false;
     }
 
+    /**
+     * 判断是否为数字
+     * @param str
+     * @return
+     */
+    public static boolean isNumeric(String str) {
+        if(str == null) {
+            return false;
+        } else {
+            int length = str.length();
+
+            for(int i = 0; i < length; ++i) {
+                if(!Character.isDigit(str.charAt(i))) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+
+    /**
+     * 判断是否为double类型
+     * @param str
+     * @return
+     */
+    public static boolean isDouble(String str){
+        try{
+            double b = Double.parseDouble(str);
+        }catch(Exception e)
+        {
+            return false;
+        }
+        return true;
+    }
 }
