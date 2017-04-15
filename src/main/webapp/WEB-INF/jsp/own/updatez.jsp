@@ -5,6 +5,16 @@
 <head>
     <title>用户列表</title>
     <%@include file="/WEB-INF/jsp/common/head.jsp" %>
+    <style>
+        #myScrollspy {
+            width: 300px;
+            height: 200px;
+            border: 1px solid #00F
+        }
+    </style>
+    <script>
+
+    </script>
 </head>
 <body>
 <%@include file="/WEB-INF/jsp/common/nav.jsp" %>
@@ -13,38 +23,67 @@
         <div class="panel-heading text-center">
             <h2>修改资料页面</h2>
         </div>
+
         <div class="panel-body">
-            <form class="form-horizontal col-md-offset-2" role="form">
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">旧密码</label>
-                    <div class="col-sm-4">
-                        <input type="password" class="form-control" id="oldpassword" name="password"
-                        >
-                        <label class="col-sm-10 control-label" id="updatep" name="password"></label>
-                    </div>
+            <div class="row">
+                <div class="col-xs-1" id="myScrollspy">图片
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">新密码</label>
-                    <div class="col-sm-4">
-                        <input type="password" class="form-control" id="newpassword1" name="newpassword1"
-                        >
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">新密码</label>
-                    <div class="col-sm-4">
-                        <input type="password" class="form-control" id="newpassword2" name="newpassword2"
-                        >
-                    </div>
-                </div>
+                <div class="col-xs-8">
+                    <form class="form-horizontal col-md-offset-1" role="form">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">名字</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="name" name="name"
+                                       value="${userVO.name}"
+                                >
+                                <label class="col-sm-10 control-label" id="updatep" name="updatep">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">性别</label>
+                            <div class="col-sm-4">
+                                <select id="sex" name="sex" class="form-control selectpicker"
+                                        data-live-search="true">
+                                    <option value="1"
+                                            <c:if test="${userVO.sex}">selected="selected"</c:if>>男
+                                    </option>
+                                    <option value="2"
+                                            <c:if test="${userVO.sex}">selected="selected"</c:if>>女
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
 
-                <div class="form-group">
-                    <button type="button" class="btn btn-default col-sm-offset-2 col-sm-4"
-                            onclick="userhandler.updatepBtn();">修改密码
-                    </button>
-                </div>
-            </form>
 
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">爱好</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="hobby" name="hobby"
+                                       value="${userVO.hobby}"
+                                >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">创建日期</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control"
+                                       value="${userVO.createTime}" readonly="readonly"
+                                >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="button" class="btn btn-default col-sm-offset-1"
+                                    onclick="userhandler.updatzBtn();">修改
+                            </button>
+                            <button type="button" class="btn btn-default"
+                                    onclick="userhandler.updatezBtn();">返回
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>
