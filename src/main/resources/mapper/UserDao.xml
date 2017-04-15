@@ -23,10 +23,29 @@
 		WHERE id=#{id}
 	</select>
 
+	<select id="queryUser2ById" resultType="User2">
+		SELECT *
+		FROM _user2
+		WHERE id=#{id}
+	</select>
+
+
 	<update id="update">
 		UPDATE
 		_user SET
-		password = #{password},
+		name=#{name},password = #{password},
+		<if test="delTime!=null">
+			del_Time = #{delTime},
+		</if>
+		update_Time=#{updateTime}
+		WHERE
+		id=#{id}
+	</update>
+
+	<update id="update2">
+		UPDATE
+		_user2 SET
+		photo=#{photo},sex=#{sex},hobby=#{hobby},
 		<if test="delTime!=null">
 			del_Time = #{delTime},
 		</if>

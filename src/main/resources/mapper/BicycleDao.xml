@@ -8,6 +8,14 @@
 		limit #{offset},#{limit}
 	</select>
 
+	<select id="queryStatusBicycle"  resultType="Bicycle">
+		SELECT *
+		FROM _bicycle
+		WHERE status=#{status}
+		ORDER BY create_time DESC
+		limit #{offset},#{limit}
+	</select>
+
 	<select id="queryBicycleById" resultType="Bicycle">
 		SELECT *
 		FROM _bicycle

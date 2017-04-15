@@ -1,10 +1,9 @@
 package com.lk.ofo.dao;
 
-import java.util.List;
-
+import com.lk.ofo.entity.Order;
 import org.apache.ibatis.annotations.Param;
 
-import com.lk.ofo.entity.Order;
+import java.util.List;
 
 public interface OrderDao {
 
@@ -22,4 +21,10 @@ public interface OrderDao {
 	 * @return
 	 */
 	Order queryOrderById (int id);
+
+	/**
+	 * 添加Order
+	 * @return order
+	 */
+	Boolean add(Order order);
 }

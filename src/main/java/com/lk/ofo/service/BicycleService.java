@@ -1,8 +1,8 @@
 package com.lk.ofo.service;
 
-import java.util.List;
-
 import com.lk.ofo.entity.Bicycle;
+
+import java.util.List;
 
 /**
  * 自行车业务接口
@@ -18,7 +18,15 @@ public interface BicycleService {
 	 * @return
 	 */
 	List<Bicycle> getBicycleList(Integer offset,Integer limit);
-	
+
+	/**
+	 * 查看不同状态自行车
+	 * @param offset
+	 * @param limit
+	 * @return
+	 */
+	List<Bicycle> getBicycleList(Integer offset,Integer limit,String status);
+
 	/**
 	 * 查找自行车
 	 * @param id
@@ -39,13 +47,6 @@ public interface BicycleService {
 	 * @return
 	 */
 	Boolean delBicycle(int id);
-	
-	/**
-	 * 添加自行车
-	 * @param bicycle
-	 * @return
-	 */
-	Boolean addBicycle(Bicycle bicycle);
 
 	/**
 	 * 添加多亮自行车

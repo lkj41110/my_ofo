@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lk.ofo.dao.OrderDao">
-	<select id="queryAllOrder" resultType="Order">
+    <select id="queryAllOrder" resultType="Order">
 		SELECT *
 		FROM _order
 		ORDER BY create_time DESC
 		limit #{offset},#{limit}
 	</select>
-	
-	<select id="queryOrderById" resultType="Order">
+
+    <select id="queryOrderById" resultType="Order">
 		SELECT *
-		FROM _bicycle
+		FROM _order
 		WHERE id=#{id}
 	</select>
+
+    <insert id="add">
+        INSERT INTO
+  		_order (user_id, bicycle_id, start_time, start_X, start_y, status)
+		VALUES
+  		(#{userId}, #{bicycleId},#{startTime},#{start_X},#{start_Y}, #{status})
+	</insert>
 </mapper>

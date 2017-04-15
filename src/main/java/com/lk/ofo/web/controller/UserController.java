@@ -1,9 +1,9 @@
 package com.lk.ofo.web.controller;
 
-import java.util.List;
-
-import javax.servlet.http.HttpSession;
-
+import com.lk.ofo.dto.BaseResult;
+import com.lk.ofo.entity.User;
+import com.lk.ofo.enums.ConstantEnum;
+import com.lk.ofo.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.lk.ofo.dto.BaseResult;
-import com.lk.ofo.entity.User;
-import com.lk.ofo.enums.ConstantEnum;
-import com.lk.ofo.service.UserService;
+import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @RequestMapping("/user")
@@ -66,7 +64,6 @@ public class UserController {
 		LOG.info(user.toString());
 		return new BaseResult<Object>(true, null);
 	}
-
 	/**
 	 * 注销用户
 	 */
@@ -78,10 +75,6 @@ public class UserController {
 		return "login";
 	}
 
-	/**
-	 * 添加权限
-	 */
-	// TODO
 	/**
 	 * 查看用户具体信息跳转
 	 * 
@@ -109,7 +102,7 @@ public class UserController {
 	@ResponseBody
 	public BaseResult<Object> update(User user) {
 		LOG.info("invoke----------/user/update");
-		// TODO
+		// TODO 修改用户资料
 		if (user == null)
 			return new BaseResult<Object>(false, "用户不能为空");
 		LOG.info(user.toString());

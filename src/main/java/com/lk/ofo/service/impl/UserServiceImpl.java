@@ -3,6 +3,8 @@ package com.lk.ofo.service.impl;
 import java.util.Date;
 import java.util.List;
 
+import com.lk.ofo.entity.User2;
+import com.lk.ofo.entity.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,6 +45,43 @@ public class UserServiceImpl implements UserService {
 	public Boolean update(User user) {
 		user.setUpdateTime(new Date());
 		return userDao.update(user);
+	}
+
+	@Override
+	public UserVO updatez(Integer id, String sex, String name, String hobby, String photo) {
+		User user=userDao.queryUserById(id);
+		user.setName(name);
+		user.setUpdateTime(new Date());
+		User2 user2=userDao.queryUser2ById(id);
+		user2.setHobby(hobby);
+		user2.setPhoto(photo);
+		user2.setSex(sex);
+		user2.setUpdateTime(new Date());
+		//修改user和user2
+		userDao.update(user);
+		userDao.update2(user2);
+		UserVO userVO=new UserVO();
+		userVO.setId(user.getId());
+		userVO.setName(user.getName());
+		userVO.setHobby(user2.getHobby());
+		userVO.setPhoto(user2.getPhoto());
+		userVO.setSex(user2.getSex());
+		return userVO;
+	}
+
+
+	@Override
+	public UserVO getDetail(Integer id) {
+		UserVO userVO=new UserVO();
+		//分别取出两种信息
+		User user=userDao.queryUserById(id);
+		User2 user2=userDao.queryUser2ById(id);
+		userVO.setId(user.getId());
+		userVO.setName(user.getName());
+		userVO.setHobby(user2.getHobby());
+		userVO.setPhoto(user2.getPhoto());
+		userVO.setSex(user2.getSex());
+		return userVO;
 	}
 
 

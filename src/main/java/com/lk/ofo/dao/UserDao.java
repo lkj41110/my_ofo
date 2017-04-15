@@ -2,6 +2,7 @@ package com.lk.ofo.dao;
 
 import java.util.List;
 
+import com.lk.ofo.entity.User2;
 import org.apache.ibatis.annotations.Param;
 
 import com.lk.ofo.entity.User;
@@ -34,13 +35,23 @@ public interface UserDao {
     User queryUserById(int id);
 
     /**
-     * 通过姓名找用户
+     * 通过id找用户资料
+     *
+     * @param id
+     * @return
      */
-    // TODO
+    User2 queryUser2ById(int id);
 
     /**
      * 修改用户
      */
     Boolean update(User user);
+
+    /**
+     * 修改用户资料
+     * @param user
+     * @return
+     */
+    Boolean update2(User2 user);
 
 }

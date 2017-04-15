@@ -25,8 +25,12 @@ public class BicycleServiceImpl implements BicycleService {
 	}
 
 	@Override
+	public List<Bicycle> getBicycleList(Integer offset, Integer limit, String status) {
+		return bicycleDao.queryStatusBicycle(offset,limit,status);
+	}
+
+	@Override
 	public String getPassword(int id) {
-		// TODO id检验
 		return bicycleDao.getPassword(id);
 	}
 
@@ -52,13 +56,7 @@ public class BicycleServiceImpl implements BicycleService {
 		return bicycleDao.updateBicycle(bicycle);
 		
 	}
-
-	@Override
-	public Boolean addBicycle(Bicycle bicycle) {
-		//TODO 添加自行车
-		return true;
-	}
-
+	
 	@Override
 	public void addBicycle(List bicycles) {
 		if(bicycles.size()==0){

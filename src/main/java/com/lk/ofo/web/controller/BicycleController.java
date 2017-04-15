@@ -1,9 +1,12 @@
 package com.lk.ofo.web.controller;
 
-import java.util.List;
-
 import com.alibaba.fastjson.JSON;
+import com.lk.ofo.dto.BaseResult;
+import com.lk.ofo.entity.Bicycle;
+import com.lk.ofo.enums.ConstantEnum;
+import com.lk.ofo.exception.BizException;
 import com.lk.ofo.exception.ServiceException;
+import com.lk.ofo.service.BicycleService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.lk.ofo.dto.BaseResult;
-import com.lk.ofo.entity.Bicycle;
-import com.lk.ofo.exception.BizException;
-import com.lk.ofo.service.BicycleService;
+import java.util.List;
 
 @Controller
 @RequestMapping("/bicycle")
@@ -43,6 +43,24 @@ public class BicycleController {
         List<Bicycle> list = bicycleService.getBicycleList(offset, limit);
         model.addAttribute("bicyclelist", list);
         return "bicycle/bicyclelist";
+    }
+
+    /**
+     * 查看异常车辆
+     *
+     * @param model
+     * @param offset
+     * @param limit
+     * @return
+     */
+    @RequestMapping(path = "/list2", method = {RequestMethod.GET})
+    public String bicyclelist2(Model model, Integer offset, Integer limit) {
+        LOG.info("invoke----------/bicycle/list2");
+        offset = offset == null ? 0 : offset;// 默认便宜0
+        limit = limit == null ? 50 : limit;// 默认展示50条
+        List<Bicycle> list = bicycleService.getBicycleList(offset, limit, ConstantEnum.BICYCLE_WORING);
+        model.addAttribute("bicyclelist2", list);
+        return "bicycle/bicyclelist2";
     }
 
     /**
