@@ -30,6 +30,9 @@ public enum ConstantEnum {
     public static final String MESSSAGE_DELETE = "2";//删除
     public static final String MESSSAGE_ALL = "3";//全部
 
+    //价格
+    //TODO 时间化 可设置化
+    public static final Integer PRICE=1;
 
     private int msg;
 
