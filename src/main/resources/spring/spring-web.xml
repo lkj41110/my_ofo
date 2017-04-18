@@ -33,6 +33,7 @@
 
 	<!--扫描web相关的controller -->
 	<context:component-scan base-package="com.lk.ofo.web" />
+	<context:component-scan base-package="com.lk.ofo.phone" />
 
 	<!--全局异常捕捉 -->
 	<bean class="com.lk.ofo.exception.GlobalExceptionResolver" />

@@ -1,7 +1,5 @@
 package com.lk.ofo.entity;
 
-import java.util.Date;
-
 /**
  * 用户资料表
  * @author lkj41110
@@ -12,6 +10,7 @@ public class User2 extends Basis{
 	private String photo;
 	private String sex;
 	private String hobby;
+	private String cash;//是否提交押金
 
 	public int getId() {
 		return id;
@@ -39,6 +38,14 @@ public class User2 extends Basis{
 
 	public String getHobby() {
 		return hobby;
+	}
+
+	public String getCash() {
+		return cash;
+	}
+
+	public void setCash(String cash) {
+		this.cash = cash;
 	}
 
 	public void setHobby(String hobby) {
