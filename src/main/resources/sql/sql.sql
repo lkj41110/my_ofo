@@ -14,6 +14,7 @@ CREATE TABLE _user (
   COMMENT '密码',
   `phone`       VARCHAR(11) NOT NULL
   COMMENT '手机号',
+  `id_card` VARCHAR(20) COMMENT '身份证',
   `grade`       VARCHAR(3)  NOT NULL DEFAULT '3'
   COMMENT '权限  1:admin管理员  2.管理员 3.普通用户',
   `score`       INT                  DEFAULT '0'
@@ -37,6 +38,7 @@ CREATE TABLE _user2 (
   `photo`    VARCHAR(2) COMMENT '头像',
   `sex`      VARCHAR(2)
   COMMENT '性别',
+  cash  VARCHAR(2) NOT NULL COMMENT '压金' DEFAULT '2',
   `hobby` TEXT
   COMMENT '爱好',
   `create_time` TIMESTAMP  NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -162,11 +164,12 @@ CREATE TABLE _message (
 INSERT INTO
   _user (name, password, phone, grade)
 VALUES
-  ('lk', '123456', '18758114722', '1'),
-  ('lk1', '123456', '18758114721', '3'),
+  ('超级管理员', '123456', '18758114722', '1'),
+  ('普通用户', '123456', '18758114721', '3'),
   ('lk2', '123456', '18758114723', '3'),
   ('lk3', '123456', '18758114724', '3'),
   ('lk4', '123456', '18758114725', '3');
+UPDATE _user SET id_card ='330282199406244674' where  id='1000';
 
 -- 自行车表
 INSERT INTO
