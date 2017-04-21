@@ -32,7 +32,7 @@ public enum ConstantEnum {
 
     //价格
     //TODO 时间化 可设置化
-    public static final Integer PRICE=1;
+    public static final Double PRICE=0.01;
 
     private int msg;
 
