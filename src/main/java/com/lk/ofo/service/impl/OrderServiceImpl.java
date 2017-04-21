@@ -1,71 +1,133 @@
 package com.lk.ofo.service.impl;
 
-import java.util.Date;
-import java.util.List;
-
 import com.lk.ofo.dao.BicycleDao;
+import com.lk.ofo.dao.OrderDao;
+import com.lk.ofo.dao.UserDao;
 import com.lk.ofo.entity.Bicycle;
+import com.lk.ofo.entity.Order;
+import com.lk.ofo.entity.User;
 import com.lk.ofo.enums.ConstantEnum;
 import com.lk.ofo.exception.ServiceException;
-import com.lk.ofo.service.BicycleService;
+import com.lk.ofo.service.OrderService;
+import com.lk.ofo.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import com.lk.ofo.dao.OrderDao;
-import com.lk.ofo.entity.Order;
-import com.lk.ofo.service.OrderService;
+import java.util.Date;
+import java.util.List;
 
 @Service
 public class OrderServiceImpl implements OrderService {
 
-	@Autowired
-	private OrderDao orderDao;
+    @Autowired
+    private OrderDao orderDao;
 
-	@Autowired
-	private BicycleDao bicycleDao;
+    @Autowired
+    private BicycleDao bicycleDao;
 
-	@Override
-	public List<Order> getOrderList(Integer offset, Integer limit) {
-		return orderDao.queryAllOrder(offset, limit);
-	}
+    @Autowired
+    private UserDao userDao;
 
-	@Override
-	public Order getOrder(Integer id) {
-		return orderDao.queryOrderById(id);
-	}
+    @Override
+    public List<Order> getOrderList(Integer offset, Integer limit) {
+        return orderDao.queryAllOrder(offset, limit);
+    }
 
-	/**查询最近此自行车未完成的结果*/
-	@Override
-	public Order getOrder2(Integer bicycleId) {
-		Order order=getOrder(bicycleId);
-		return null;
-	}
+    @Override
+    public Order getOrder(Integer id) {
+        return orderDao.queryOrderById(id);
+    }
 
-	@Override
-	public Order createOrder(Integer userId, Integer bicycleId,String s_x,String s_y) {
-		//TODO 看用户提交押金没
-		//看车辆结束没,结束订单
-		Bicycle bicycle=bicycleDao.queryBicycleById(bicycleId);
-		//正在使用
-		if(bicycle.getStatus().equals(ConstantEnum.BICYCLE_USING)){
-			//结束订单
-		}//正在故障中
-		else if(bicycle.getStatus().equals(ConstantEnum.BICYCLE_WORING)){
-			throw new ServiceException("自行车故障中");
-		}
-		//产生订单
-		bicycle.setStatus(ConstantEnum.BICYCLE_USING);
-		bicycleDao.updateBicycle(bicycle);
-		Order order=new Order();
-		order.setBicycleId(bicycleId);
-		order.setUserId(userId);
-		order.setStartTime(new Date());
-		order.setStart_X(s_x);
-		order.setStart_y(s_y);
-		order.setStatus(ConstantEnum.ORDER_NOT_COMPLETE);
-		orderDao.add(order);
-		return order;
-	}
+    /**
+     * 查询最近此自行车未完成的结果
+     */
+    @Override
+    public Order getOrder2(Integer bicycleId) {
+        Order order = getOrder(bicycleId);
+        return null;
+    }
+
+    @Transactional
+    @Override
+    public Order createOrder(Integer userId, Integer bicycleId, String s_x, String s_y) throws ServiceException {
+        //TODO 看用户提交押金没
+        //看车辆结束没,结束订单
+        Bicycle bicycle = bicycleDao.queryBicycleById(bicycleId);
+        //正在使用
+        if (bicycle.getStatus().equals(ConstantEnum.BICYCLE_USING)) {
+            bicycle.setStatus(ConstantEnum.BICYCLE_READY);
+            //结束订单
+        }//正在故障中
+        else if (bicycle.getStatus().equals(ConstantEnum.BICYCLE_WORING)) {
+            throw new ServiceException("自行车故障中");
+        }
+
+        bicycle.setStatus(ConstantEnum.BICYCLE_USING);
+        bicycle.setAddressX(Double.parseDouble(s_x));
+        bicycle.setAddressY(Double.parseDouble(s_y));
+        bicycleDao.updateBicycle(bicycle);
+        //产生订单
+        Order order = new Order();
+        order.setBicycleId(bicycleId);
+        order.setUserId(userId);
+        order.setStartTime(new Date());
+        order.setStart_X(s_x);
+        order.setStart_Y(s_y);
+        order.setStatus(ConstantEnum.ORDER_NOT_COMPLETE);
+        orderDao.add(order);
+        return order;
+    }
+
+    @Transactional
+    @Override
+    public Boolean endOrder(Integer orderId, Integer userId, Integer bicycleId, String x, String y) {
+        Order order = orderDao.queryOrderById(orderId);
+        if (order == null) {
+            throw new ServiceException("不存在此订单");
+        }
+        //未完成
+        if (!ConstantEnum.ORDER_NOT_COMPLETE.equals(order.getStatus())) {
+            throw new ServiceException("订单状态错误");
+        }
+        //改变车辆位置
+        Bicycle bicycle = bicycleDao.queryBicycleById(bicycleId);
+        bicycle.setStatus(ConstantEnum.BICYCLE_READY);
+        bicycle.setAddressX(Double.parseDouble(x));
+        bicycle.setAddressY(Double.parseDouble(y));
+        bicycleDao.updateBicycle(bicycle);
+        //改变订单状态
+        order.setEnd_X(x);
+        order.setEnd_Y(y);
+        order.setStatus(ConstantEnum.ORDER_NOT_PAY);
+        order.setEndTime(new Date());
+        order.setUpdateTime(new Date());
+        //计算价格
+        order.setCost(DateUtil.dateSubtractOfMin(order.getStartTime(), order.getEndTime()) * ConstantEnum.PRICE);
+        return orderDao.update(order);
+    }
+
+    @Override
+    public Boolean payment(Integer orderId, Integer userId) {//付款
+        Order order = orderDao.queryOrderById(orderId);
+        if (order == null) {
+            throw new ServiceException("不存在此订单");
+        }
+        //未完成
+        if (!ConstantEnum.ORDER_NOT_PAY.equals(order.getStatus())) {
+            throw new ServiceException("订单状态错误");
+        }
+
+        User user = userDao.queryUserById(userId);
+        int userId1 = order.getUserId();
+        if (user == null || userId != userId1) {
+            throw new ServiceException("用户信息错误");
+        }
+        //改变状态
+        order.setStatus(ConstantEnum.ORDER_COMPLETE);
+        order.setUpdateTime(new Date());
+        return orderDao.update(order);
+    }
 
 
 }

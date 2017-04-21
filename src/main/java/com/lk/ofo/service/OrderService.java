@@ -44,4 +44,22 @@ public interface OrderService {
      */
     Order createOrder(Integer userId, Integer bicycleId, String s_x, String s_y);
 
+    /**
+     * 结束车辆订单
+     * @param orderId
+     * @param userId
+     * @param bicycleId
+ param x
+     * @param y
+     * @return
+     */
+    Boolean endOrder(Integer orderId,Integer userId, Integer bicycleId, String x,String y);
+
+    /**
+     * 付款
+     * @param orderId
+     * @param userId
+     * @return
+     */
+    Boolean payment(Integer orderId,Integer userId);
 }

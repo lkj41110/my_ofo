@@ -205,7 +205,11 @@ public class DateUtil{
         return (endyear - startYear) * ONE_YEAR + (endDay - startDay);
 
     }
-
+    public static int dateSubtractOfMin(Date fDate, Date oDate) {
+        long between=(oDate.getTime()-fDate.getTime())/1000;//除以1000是为了转换成秒
+        int min=(int)(between/60);
+        return min;
+    }
 
     /**
      * 判断目标时间戳 距当前时间是否超过 seconds 秒

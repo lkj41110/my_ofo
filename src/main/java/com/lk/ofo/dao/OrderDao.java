@@ -26,5 +26,12 @@ public interface OrderDao {
 	 * 添加Order
 	 * @return order
 	 */
-	Boolean add(Order order);
+	Integer add(Order order);
+
+    /**
+     *
+     * @param order
+     * @return
+     */
+    Boolean update(Order order);
 }
