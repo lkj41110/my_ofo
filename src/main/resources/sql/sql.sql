@@ -14,7 +14,7 @@ CREATE TABLE _user (
   COMMENT '密码',
   `phone`       VARCHAR(11) NOT NULL
   COMMENT '手机号',
-  `id_card` VARCHAR(20) COMMENT '身份证',
+  `id_card`     VARCHAR(20) COMMENT '身份证',
   `grade`       VARCHAR(3)  NOT NULL DEFAULT '3'
   COMMENT '权限  1:admin管理员  2.管理员 3.普通用户',
   `score`       INT                  DEFAULT '0'
@@ -33,13 +33,14 @@ CREATE TABLE _user (
 
 -- 用户个人资料表
 CREATE TABLE _user2 (
-  `id`       INT NOT NULL
+  `id`          INT        NOT NULL
   COMMENT '用户ID',
-  `photo`    VARCHAR(2) COMMENT '头像',
-  `sex`      VARCHAR(2)
+  `photo`       VARCHAR(2) COMMENT '头像',
+  `sex`         VARCHAR(2)
   COMMENT '性别',
-  cash  VARCHAR(2) NOT NULL COMMENT '压金' DEFAULT '2',
-  `hobby` TEXT
+  cash          VARCHAR(2) NOT NULL
+  COMMENT '压金'                      DEFAULT '2',
+  `hobby`       TEXT
   COMMENT '爱好',
   `create_time` TIMESTAMP  NOT NULL DEFAULT CURRENT_TIMESTAMP
   COMMENT '创建时间',
@@ -75,6 +76,28 @@ CREATE TABLE _bicycle (
   DEFAULT CHARSET = utf8
   COMMENT = '自行车表';
 
+-- 自行车损坏表
+CREATE TABLE _destroy_bicycle (
+  `id`          INT        NOT NULL
+  COMMENT 'id',
+  `number`     INT        NOT NULL DEFAULT 0
+  COMMENT '次数',
+  `status`      VARCHAR(3) NOT NULL DEFAULT '0'
+  COMMENT '自行车损坏状态',
+  `address_X`   VARCHAR(10) COMMENT '经度X',
+  `address_Y`   VARCHAR(10) COMMENT '维度Y',
+  `create_time` TIMESTAMP  NOT NULL DEFAULT CURRENT_TIMESTAMP
+  COMMENT '创建时间',
+  `del_time`    DATETIME COMMENT '删除时间',
+  `update_Time` TIMESTAMP  NOT NULL DEFAULT CURRENT_TIMESTAMP
+  COMMENT '更新时间',
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`id`) REFERENCES _bicycle (`id`)
+)
+  ENGINE = INNODB
+  DEFAULT CHARSET = utf8
+  COMMENT = '自行车损坏表';
+
 -- 订单表
 CREATE TABLE _order (
   `id`          INT        NOT NULL AUTO_INCREMENT
@@ -89,7 +112,7 @@ CREATE TABLE _order (
   `start_X`     VARCHAR(10) COMMENT '开始的x',
   `start_y`     VARCHAR(10) COMMENT '开始的x',
   `end_X`       VARCHAR(10) COMMENT '结束的x',
-  `end_y`       VARCHAR(10) COMMENT '结束的y',
+  `end_Y`       VARCHAR(10) COMMENT '结束的y',
   `status`      VARCHAR(3) NOT NULL DEFAULT '0'
   COMMENT '结算状态',
   `create_time` TIMESTAMP  NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -116,7 +139,7 @@ CREATE TABLE _maintain (
   `start_time`  DATETIME COMMENT '创建时间',
   `end_time`    DATETIME COMMENT '结束时间',
   `start_X`     VARCHAR(10) COMMENT '开始的x',
-  `start_y`     VARCHAR(10) COMMENT '开始的x',
+  `start_Y`     VARCHAR(10) COMMENT '开始的x',
   `status`      VARCHAR(3) NOT NULL DEFAULT '0'
   COMMENT '结算状态',
   `create_time` TIMESTAMP  NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -169,7 +192,9 @@ VALUES
   ('lk2', '123456', '18758114723', '3'),
   ('lk3', '123456', '18758114724', '3'),
   ('lk4', '123456', '18758114725', '3');
-UPDATE _user SET id_card ='330282199406244674' where  id='1000';
+UPDATE _user
+SET id_card = '330282199406244674'
+WHERE id = '1000';
 
 -- 自行车表
 INSERT INTO
@@ -189,13 +214,13 @@ VALUES
 
 -- 插入订单表
 INSERT INTO
-  _order (user_id, bicycle_id, start_time, end_time, cost, start_X, start_y, end_X, end_y, status)
+  _order (user_id, bicycle_id, start_time, end_time, cost, start_X, start_Y, end_X, end_y, status)
 VALUES
-  ('1000', '1001', '2017-03-27 22:47:10', '2017-03-27 22:47:10', 1.1, '1', '2', '3', '4', 1);
+  ('1000', '1001', '2017-03-27 22:47:10', '2017-03-27 22:47:10', 1.1, '1', '2', '3', '4', 3);
 
 -- 用户具体信息表格
 INSERT INTO
-  _user2(id, photo, sex)
+  _user2 (id, photo, sex)
 VALUES
-  (1000,"aa","1");
+  (1000, "aa", "1");
 
