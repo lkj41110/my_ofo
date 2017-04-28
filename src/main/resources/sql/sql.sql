@@ -10,6 +10,8 @@ CREATE TABLE _user (
   COMMENT '管理员ID',
   `name`        VARCHAR(50) NOT NULL
   COMMENT '用户名',
+  `name2`       VARCHAR(50)
+  COMMENT '真实姓名',
   `password`    VARCHAR(50) NOT NULL
   COMMENT '密码',
   `phone`       VARCHAR(11) NOT NULL
@@ -80,7 +82,7 @@ CREATE TABLE _bicycle (
 CREATE TABLE _destroy_bicycle (
   `id`          INT        NOT NULL
   COMMENT 'id',
-  `number`     INT        NOT NULL DEFAULT 0
+  `number`      INT        NOT NULL DEFAULT 0
   COMMENT '次数',
   `status`      VARCHAR(3) NOT NULL DEFAULT '0'
   COMMENT '自行车损坏状态',
