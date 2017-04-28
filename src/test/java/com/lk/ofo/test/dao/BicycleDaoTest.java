@@ -3,12 +3,15 @@ package com.lk.ofo.test.dao;
 import java.util.Date;
 import java.util.List;
 
+import com.lk.ofo.entity.DestroyBicycle;
+import com.lk.ofo.service.BicycleService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.lk.ofo.dao.BicycleDao;
@@ -58,8 +61,25 @@ public class BicycleDaoTest {
 	}
 
 
+	//添加破的车辆
 	@Test
-	public void addBicycle(){
+	public void addDestroyBicycle(){
+        DestroyBicycle bicycle=new DestroyBicycle();
+        bicycle.setId(1003);
+//        bicycle.setUserId(1002);
+        bicycle.setNumber(2);
+        bicycle.setStatus("1");
+        bicycle.setAddressX("123");
+        bicycle.setAddressY("321");
+        bicycleDao.addDestroyBicycle(bicycle);
 	}
+
+	@Test
+    public void queryDestroyBicycle(){
+	    DestroyBicycle destroyBicycle= bicycleDao.queryDestroyBicycleById(1003);
+	    int var1=destroyBicycle.getNumber();
+	    destroyBicycle.setNumber(var1+1);
+	    bicycleDao.updateDestroyBicycle(destroyBicycle);
+    }
 
 }

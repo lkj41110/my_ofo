@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lk.ofo.dao.BicycleDao">
-	<select id="queryAllBicycle" resultType="Bicycle">
+    <select id="queryAllBicycle" resultType="Bicycle">
 		SELECT *
 		FROM _bicycle
 		ORDER BY create_time DESC
 		limit #{offset},#{limit}
 	</select>
 
-	<select id="queryStatusBicycle"  resultType="Bicycle">
+    <select id="queryStatusBicycle" resultType="Bicycle">
 		SELECT *
 		FROM _bicycle
 		WHERE status=#{status}
@@ -16,37 +16,68 @@
 		limit #{offset},#{limit}
 	</select>
 
-	<select id="queryBicycleById" resultType="Bicycle">
+    <select id="queryBicycleById" resultType="Bicycle">
 		SELECT *
 		FROM _bicycle
 		WHERE id=#{id}
 	</select>
 
-	<!-- 获得密码 -->
-	<select id="getPassword" resultType="java.lang.String">
+    <!-- 获得密码 -->
+    <select id="getPassword" resultType="java.lang.String">
 		SELECT password
 		FROM _bicycle
 		WHERE id=#{id}
 	</select>
 
-	<!-- 添加车辆 -->
-	<insert id="addBicycle">
+    <!-- 添加车辆 -->
+    <insert id="addBicycle">
 		INSERT INTO
 		_bicycle(id,password)
 		VALUES
 		(#{id},#{password})
 	</insert>
 
-	<!-- 修改车辆 -->
-	<update id="updateBicycle">
-		UPDATE
-		_bicycle SET
-		address_X=#{addressX},address_Y=#{addressY},password=#{password},status=#{status},
-		<if test="delTime!=null">
-			del_Time = #{delTime},
-		</if>
-		update_Time=#{updateTime}
-		WHERE
-		id=#{id}
-	</update>
+    <!-- 修改车辆 -->
+    <update id="updateBicycle">
+        UPDATE
+        _bicycle SET
+        address_X=#{addressX},address_Y=#{addressY},password=#{password},status=#{status},
+        <if test="delTime!=null">
+            del_Time = #{delTime},
+        </if>
+        update_Time=#{updateTime}
+        WHERE
+        id=#{id}
+    </update>
+
+
+    <!-- ****损坏车辆Dao***-->
+    <!-- 添加车辆 -->
+    <insert id="addDestroyBicycle">
+        INSERT INTO
+        _destroy_bicycle(id,number,status,address_X,address_Y)
+        VALUES
+        (#{id},#{number},#{status},#{addressX},#{addressY})
+    </insert>
+
+    <select id="queryDestroyBicycleById" resultType="DestroyBicycle">
+        SELECT *
+        FROM _destroy_bicycle
+        WHERE id=#{id}
+    </select>
+
+    <!-- 修改车辆 -->
+    <update id="updateDestroyBicycle">
+        UPDATE
+        _destroy_bicycle SET
+        number=#{number},
+        <if test="delTime!=null">
+            del_Time = #{delTime},
+        </if>
+        update_Time=#{updateTime}
+        WHERE
+        id=#{id}
+    </update>
+
+
 </mapper>

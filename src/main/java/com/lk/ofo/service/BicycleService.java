@@ -61,4 +61,15 @@ public interface BicycleService {
 	 * @return
 	 */
 	Boolean updateBicycle(Bicycle bicycle);
+
+    /**
+     * 添加损坏车辆
+     * @param userId
+     * @param bicycleId
+     * @param status
+     * @param x
+     * @param y
+     * @return
+     */
+    Boolean addDestroyBicycle(Integer userId, Integer bicycleId, String status, String x, String y);
 }

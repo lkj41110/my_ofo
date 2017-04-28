@@ -1,6 +1,7 @@
 package com.lk.ofo.dao;
 
 import com.lk.ofo.entity.Bicycle;
+import com.lk.ofo.entity.DestroyBicycle;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -14,6 +15,7 @@ public interface BicycleDao {
      * @return
      */
     List<Bicycle> queryAllBicycle(@Param("offset") int offset, @Param("limit") int limit);
+
 
     /**
      * 查询状态自行车
@@ -54,4 +56,25 @@ public interface BicycleDao {
      * @return
      */
     Boolean updateBicycle(Bicycle bicycle);
+
+    /**
+     * 添加损坏的自行车
+     * @param destroyBicycle
+     * @return
+     */
+    Boolean addDestroyBicycle(DestroyBicycle destroyBicycle);
+
+    /**
+     * 根据id查询损坏车辆
+     * @param id
+     * @return
+     */
+    DestroyBicycle queryDestroyBicycleById(int id);
+
+    /**
+     *
+     * @param destroyBicycle
+     * @return
+     */
+    Boolean updateDestroyBicycle(DestroyBicycle destroyBicycle);
 }
