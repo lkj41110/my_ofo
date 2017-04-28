@@ -8,7 +8,9 @@ package com.lk.ofo.entity;
  */
 public class User extends Basis {
     private int id;
-    private String name;
+    private String name;    //nickName
+    private String name2;   //真实姓名
+
     private String password;
     private String phone;
     private String idCard;
@@ -29,6 +31,14 @@ public class User extends Basis {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getName2() {
+        return name2;
+    }
+
+    public void setName2(String name2) {
+        this.name2 = name2;
     }
 
     public String getPassword() {

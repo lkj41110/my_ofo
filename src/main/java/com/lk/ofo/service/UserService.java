@@ -1,6 +1,7 @@
 package com.lk.ofo.service;
 
 import com.lk.ofo.entity.User;
+import com.lk.ofo.entity.User2;
 import com.lk.ofo.entity.vo.UserVO;
 
 import java.util.List;
@@ -40,6 +41,13 @@ public interface UserService {
     User getUserById(Integer id);
 
     /**
+     * 查询user2
+     * @param id
+     * @return
+     */
+    User2 getUser2ById(Integer id);
+
+    /**
      * 添加用户
      *
      * @param user
@@ -54,6 +62,8 @@ public interface UserService {
      * @return
      */
     Boolean update(User user);
+
+    Boolean update2(User2 user2);
 
     /**
      * 修改资料
