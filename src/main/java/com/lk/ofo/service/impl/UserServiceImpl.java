@@ -34,6 +34,11 @@ public class UserServiceImpl implements UserService {
 		return userDao.queryUserById(id);
 	}
 
+    @Override
+    public User2 getUser2ById(Integer id) {
+        return userDao.queryUser2ById(id);
+    }
+
 	@Override
 	public Boolean addUser(User user) {
 		//TODO 添加用户
@@ -45,6 +50,13 @@ public class UserServiceImpl implements UserService {
 		user.setUpdateTime(new Date());
 		return userDao.update(user);
 	}
+
+    @Override
+    public Boolean update2(User2 user2) {
+        user2.setUpdateTime(new Date());
+        return userDao.update2(user2);
+    }
+
 
 	@Override
 	public UserVO updatez(Integer id, String sex, String name, String hobby, String photo) {

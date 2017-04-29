@@ -1,5 +1,9 @@
 ## my_ofo 毕业设计
 
+作者：lkj41110
+git
+
+
 ### 项目使用技术
 - 使用的脚手架为[wosyingjun/beauty_ssm](https://github.com/wosyingjun/beauty_ssm)
 - springMVC+Spring+Mybatis
@@ -12,6 +16,7 @@
 - [Druid（数据源配置 sql防注入 sql性能监控)](http://wosyingjun.iteye.com/blog/2306139)
 - 统一的异常处理
 - JSP JSTL JavaScript
+
 
 ---
 ### 存在的问题
