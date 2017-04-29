@@ -1,6 +1,8 @@
 ## my_ofo 毕业设计
 
 作者：lkj41110
+git
+
 
 ### 项目使用技术
 - 使用的脚手架为[wosyingjun/beauty_ssm](https://github.com/wosyingjun/beauty_ssm)
