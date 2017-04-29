@@ -1,7 +1,7 @@
 ## my_ofo 毕业设计
 
 作者：lkj41110
-git
+git/feature
 
 
 ### 项目使用技术
