@@ -1,6 +1,7 @@
 package com.lk.ofo.service;
 
 import com.lk.ofo.entity.Bicycle;
+import com.lk.ofo.entity.vo.BicyclesVO;
 
 import java.util.List;
 
@@ -62,6 +63,13 @@ public interface BicycleService {
 	 */
 	Boolean updateBicycle(Bicycle bicycle);
 
+    /**
+     * 地图获取坐标
+     * @param x
+     * @param y
+     * @return
+     */
+	BicyclesVO getBicycles1(Double x,Double y);
     /**
      * 添加损坏车辆
      * @param userId

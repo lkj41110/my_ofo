@@ -3,12 +3,14 @@ package com.lk.ofo.service.impl;
 import com.lk.ofo.dao.BicycleDao;
 import com.lk.ofo.entity.Bicycle;
 import com.lk.ofo.entity.DestroyBicycle;
+import com.lk.ofo.entity.vo.BicyclesVO;
 import com.lk.ofo.exception.BizException;
 import com.lk.ofo.exception.ServiceException;
 import com.lk.ofo.service.BicycleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -55,6 +57,23 @@ public class BicycleServiceImpl implements BicycleService {
         bicycle.setUpdateTime(new Date());
         return bicycleDao.updateBicycle(bicycle);
 
+    }
+
+    @Override
+    public BicyclesVO getBicycles1(Double x, Double y) {
+        BicyclesVO bicyclesVO=new BicyclesVO();
+        List<Bicycle> list = bicycleDao.getBicycles(x,y);
+        ArrayList listX=new ArrayList();
+        ArrayList listY=new ArrayList();
+        if(list==null)
+            return null;
+        for(Bicycle bicycle:list){
+            listX.add(bicycle.getAddressX());
+            listY.add(bicycle.getAddressY());
+        }
+        bicyclesVO.setListX(listX);
+        bicyclesVO.setListY(listY);
+        return bicyclesVO;
     }
 
     @Override

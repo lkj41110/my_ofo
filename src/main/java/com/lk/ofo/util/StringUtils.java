@@ -43,7 +43,7 @@ public class StringUtils {
      * 坐标检验 在杭州
      */
     public static boolean isInHangZHou(Double x, Double y) {
-        if (x >= 118.35 && x < 120.5 && y > 29.183 && y < 31.55)
+        if (y >= 118.35 && y < 120.5 && x > 29.183 && x < 31.55)
             return true;
         return false;
     }

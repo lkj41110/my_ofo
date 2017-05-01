@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.lk.ofo.entity.DestroyBicycle;
 import com.lk.ofo.service.BicycleService;
+import com.oracle.tools.packager.Log;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -80,6 +81,12 @@ public class BicycleDaoTest {
 	    int var1=destroyBicycle.getNumber();
 	    destroyBicycle.setNumber(var1+1);
 	    bicycleDao.updateDestroyBicycle(destroyBicycle);
+    }
+
+    @Test
+    public void getBicycle(){
+        List list=bicycleDao.getBicycles(30.317214,120.389063);
+        Log.info(list.toString());
     }
 
 }

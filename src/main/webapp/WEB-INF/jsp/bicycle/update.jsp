@@ -57,13 +57,12 @@
 								value="<fmt:formatDate value="${bicycle.createTime}"
 										pattern="yyyy-MM-dd HH:mm:ss" />"
 								readonly="readonly">
-							
 						</div>
 					</div>
-					<div class="form-group">
-						<a id="loginBtn" class="btn btn-success col-sm-offset-2 col-sm-4"
-							href="${pageContext.request.contextPath}/map/byXY?addressX=${bicycle.addressX}&addressY=${bicycle.addressY}">地图查看</a>
-					</div>
+					<%--<div class="form-group">--%>
+						<%--<a id="loginBtn" class="btn btn-success col-sm-offset-2 col-sm-4"--%>
+							<%--href="${pageContext.request.contextPath}/map/byXY?addressX=${bicycle.addressX}&addressY=${bicycle.addressY}">地图查看</a>--%>
+					<%--</div>--%>
 					<div class="form-group">
 						<div class="col-sm-offset-3 col-sm-2">
 							<button type="submit" class="btn btn-default">修改</button>
@@ -71,8 +70,15 @@
 						</div>
 					</div>
 				</form>
+
+                <div class="form-horizontal col-md-offset-2" >
+                    <iframe src="../test2.jsp?x=${bicycle.addressX}&y=${bicycle.addressY}" width="600" height="300" frameborder="0" scrolling="no"></iframe>
+                </div>
+
 			</div>
 		</div>
 	</div>
+
+
 </body>
 </html>
