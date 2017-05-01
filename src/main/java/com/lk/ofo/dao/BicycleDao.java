@@ -77,4 +77,12 @@ public interface BicycleDao {
      * @return
      */
     Boolean updateDestroyBicycle(DestroyBicycle destroyBicycle);
+
+    /**
+     * 查询附近的车辆
+     * @param x
+     * @param y
+     * @return
+     */
+    List<Bicycle> getBicycles(@Param("x") Double x,@Param("y")Double y);
 }
