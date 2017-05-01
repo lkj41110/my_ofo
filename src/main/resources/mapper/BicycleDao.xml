@@ -50,6 +50,15 @@
         id=#{id}
     </update>
 
+    <!--附近的车辆-->
+    <select id="getBicycles" resultType="Bicycle">
+        SELECT *
+        FROM _bicycle
+        Where address_X between #{x}-0.06 and #{x}+0.06
+        AND address_Y between #{y}-0.06 and #{y}+0.06
+    </select>
+
+
 
     <!-- ****损坏车辆Dao***-->
     <!-- 添加车辆 -->

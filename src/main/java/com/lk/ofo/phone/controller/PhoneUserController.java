@@ -225,6 +225,21 @@ public class PhoneUserController {
         return new BaseResult<Object>(true, userService.update(user));
     }
 
+    /**
+     * 验证
+     *
+     * @return
+     */
+    @RequestMapping(path = "/bicycle/getBicycles", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public BaseResult<Object> getBicycles(Double x, Double y) {
+        LOG.info("invoke----------/phone/user/getBicycles---***");
+        if (x == null || y == null) {
+            return new BaseResult<Object>(false, "定位失败");
+        }
+        return new BaseResult<Object>(true, null);
+    }
+
     //TODO 推荐
 
 

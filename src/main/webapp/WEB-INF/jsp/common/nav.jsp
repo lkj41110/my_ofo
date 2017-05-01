@@ -24,6 +24,7 @@
 						<li><a href="${pageContext.request.contextPath}/bicycle/list">自行车列表</a></li>
 						<li><a href="${pageContext.request.contextPath}/bicycle/add1">添加自行车</a></li>
 						<li><a href="${pageContext.request.contextPath}/bicycle/list2">查看异常车辆</a></li>
+						<li><a href="${pageContext.request.contextPath}/map/byXY1">地图</a></li>
 					</ul></li>
 
 				<!--订单 -->
