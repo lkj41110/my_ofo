@@ -19,7 +19,6 @@
                 <tr>
                     <td>车牌号</td>
                     <td>密码</td>
-                    <td>地区</td>
                     <td>提供者</td>
                     <td>处理人</td>
                     <td>操作</td>
@@ -30,7 +29,6 @@
                     <tr>
                         <td>${bicycle.id}</td>
                         <td>${bicycle.password}</td>
-                        <td></td>
                         <td></td>
                         <td></td>
                         <td><a id="loginBtn" class="btn btn-success"

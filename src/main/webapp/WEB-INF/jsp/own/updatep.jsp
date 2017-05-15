@@ -14,7 +14,7 @@
             <h2>修改密码</h2>
         </div>
         <div class="panel-body">
-            <form class="form-horizontal col-md-offset-2" role="form">
+            <form class="form-horizontal col-md-offset-1" role="form">
                 <div class="form-group">
                     <label class="col-sm-2 control-label">旧密码</label>
                     <div class="col-sm-4">

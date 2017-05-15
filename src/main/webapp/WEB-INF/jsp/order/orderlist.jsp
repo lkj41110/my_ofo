@@ -35,8 +35,12 @@
                         <td>${order.bicycleId}</td>
                         <td><fmt:formatDate value="${order.startTime}"
                                             pattern="yyyy-MM-dd HH:mm:ss"/></td>
-                        <td><fmt:formatDate value="${order.endTime}"
-                                            pattern="yyyy-MM-dd HH:mm:ss"/></td>
+                        <td><c:if test="${order.endTime==null}">
+                            进行中
+                        </c:if>
+                            <fmt:formatDate value="${order.endTime}"
+                                            pattern="yyyy-MM-dd HH:mm:ss"/>
+                        </td>
                         <td>${order.cost}</td>
                         <td><c:if test="${order.status==1}">进行中</c:if> <c:if
                                 test="${order.status==2}">未付款</c:if> <c:if

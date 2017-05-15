@@ -48,7 +48,6 @@ var userhandler = {
                 window.location.reload();
             } else {
                 alert(result['error']);
-                document.getElementById('updatep').innerHTML = result['error'];
             }
 
         });
