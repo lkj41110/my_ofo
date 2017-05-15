@@ -111,6 +111,7 @@ public class BicycleController {
             return "common/error";
         LOG.info(bicycle.toString());
         bicycleService.updateBicycle(bicycle);
+        bicycle = bicycleService.getBicycleById(bicycle.getId());
         model.addAttribute("bicycle", bicycle);
         return "bicycle/update";
     }

@@ -21,7 +21,6 @@
                     <td>用户名</td>
                     <td>手机号</td>
                     <td>身份证</td>
-                    <td>地区</td>
                     <td>创建时间</td>
                     <td>操作</td>
                 </tr>
@@ -35,8 +34,6 @@
                         <td><c:if test="${user.idCard.length()>10}">${user.idCard}</c:if>
                             <c:if test="${user.idCard==null}">无验证</c:if>
                         </td>
-
-                        <td>${user.score}</td>
                         <td><fmt:formatDate value="${user.createTime}"
                                             pattern="yyyy-MM-dd HH:mm:ss"/></td>
                         <td><a id="loginBtn" class="btn btn-success"
@@ -46,6 +43,16 @@
                 </c:forEach>
                 </tbody>
             </table>
+            
+            <ul class="pagination">
+                <li><a href="#">&laquo;</a></li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&raquo;</a></li>
+            </ul>
         </div>
     </div>
 </div>

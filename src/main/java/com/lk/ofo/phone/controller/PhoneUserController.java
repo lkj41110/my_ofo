@@ -75,7 +75,7 @@ public class PhoneUserController {
         } catch (ServiceException e) {
             return new BaseResult<Object>(false, e.getMessage());
         }
-        return new BaseResult<Object>(true, order);
+        return new BaseResult<Object>(true,bicycle);
     }
 
     /**
@@ -242,6 +242,4 @@ public class PhoneUserController {
 
     //TODO 推荐
 
-
-    //TODO 查看周围的车辆的信息
 }
