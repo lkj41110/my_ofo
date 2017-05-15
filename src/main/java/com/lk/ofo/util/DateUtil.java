@@ -36,7 +36,8 @@ public class DateUtil{
     public static final int ONE_YEAR = 365; //一年的天数
     public static final int ONE_MOUNTH = 365; //一月的天数
 
-    public static final String[] WEEK_DAY = {"周日", "周一", "周二", "周三", "周四", "周五", "周六"};
+//    public static final Integer[] WEEK_DAY = {"周日", "周一", "周二", "周三", "周四", "周五", "周六"};
+    public static final Integer[] WEEK_DAY = {0, 1, 2, 3, 4, 5, 6};
 
 
     public static Date parse(String input, String fmt) {
@@ -233,7 +234,7 @@ public class DateUtil{
      * @param date
      * @return
      */
-    public static String getWeekday(Date date) {
+    public static Integer getWeekday(Date date) {
         try {
             Integer w = getWeekdayNumber(date);
             return WEEK_DAY[w];

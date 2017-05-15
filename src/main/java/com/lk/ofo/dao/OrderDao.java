@@ -34,4 +34,10 @@ public interface OrderDao {
      * @return
      */
     Boolean update(Order order);
+
+    /**
+     * 获取条数
+     * @return
+     */
+    Integer getCount();
 }

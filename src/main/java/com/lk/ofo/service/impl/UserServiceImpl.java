@@ -94,6 +94,7 @@ public class UserServiceImpl implements UserService {
 		userVO.setPhoto(user2.getPhoto());
 		userVO.setSex(user2.getSex());
 		userVO.setPhone(user.getPhone());
+		userVO.setCreateTime(user.getCreateTime());
 		if (user.getIdCard().length() != 18) {
 			userVO.setValid(false);
 		} else {
