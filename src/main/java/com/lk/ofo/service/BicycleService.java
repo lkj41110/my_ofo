@@ -1,6 +1,8 @@
 package com.lk.ofo.service;
 
 import com.lk.ofo.entity.Bicycle;
+import com.lk.ofo.entity.Constant;
+import com.lk.ofo.entity.DestroyBicycle;
 import com.lk.ofo.entity.vo.BicyclesVO;
 
 import java.util.List;
@@ -70,6 +72,7 @@ public interface BicycleService {
      * @return
      */
 	BicyclesVO getBicycles1(Double x,Double y);
+
     /**
      * 添加损坏车辆
      * @param userId
@@ -80,4 +83,17 @@ public interface BicycleService {
      * @return
      */
     Boolean addDestroyBicycle(Integer userId, Integer bicycleId, String status, String x, String y);
+
+    /**
+     * 查找损坏车辆
+     * @param bicycle
+     * @return
+     */
+    DestroyBicycle getDestroyBicycle(Integer bicycle);
+
+    /**
+     * 设置价格
+     * @param constant
+     */
+    boolean setPrice(Constant constant);
 }

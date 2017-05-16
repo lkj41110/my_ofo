@@ -31,8 +31,7 @@ public enum ConstantEnum {
     public static final String MESSSAGE_ALL = "3";//全部
 
     //价格
-    //TODO 时间化 可设置化
-    public static final Double PRICE=0.01;
+    public static Double PRICE=0.01;
 
     private int msg;
 

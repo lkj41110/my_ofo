@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lk.ofo.dao.ConstantDao">
+
+    <select id="getConstant" resultType="Constant">
+        SELECT *
+        FROM _constant;
+    </select>
+
+    <!-- 修改参数 -->
+    <update id="setConstant">
+        UPDATE
+        _constant SET
+        cost1=${cost1},
+        cost2=${cost2},
+        cost3=${cost3}
+    </update>
+
+</mapper>

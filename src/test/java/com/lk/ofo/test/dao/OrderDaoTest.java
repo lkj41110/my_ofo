@@ -66,9 +66,9 @@ public class OrderDaoTest {
     @Test
     public void setConstant(){
         Constant constant=new Constant();
-        constant.setCost1(0.11);
-        constant.setCost2(0.22);
-        constant.setCost3(0.22);
+        constant.setCost1(1);
+        constant.setCost2(2);
+        constant.setCost3(3);
         constantDao.setConstant(constant);
     }
 }

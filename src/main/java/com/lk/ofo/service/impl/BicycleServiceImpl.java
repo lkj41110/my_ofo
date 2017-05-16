@@ -1,7 +1,9 @@
 package com.lk.ofo.service.impl;
 
 import com.lk.ofo.dao.BicycleDao;
+import com.lk.ofo.dao.ConstantDao;
 import com.lk.ofo.entity.Bicycle;
+import com.lk.ofo.entity.Constant;
 import com.lk.ofo.entity.DestroyBicycle;
 import com.lk.ofo.entity.vo.BicyclesVO;
 import com.lk.ofo.exception.BizException;
@@ -20,6 +22,9 @@ public class BicycleServiceImpl implements BicycleService {
 
     @Autowired
     private BicycleDao bicycleDao;
+
+    @Autowired
+    private ConstantDao constantDao;
 
     @Override
     public List<Bicycle> getBicycleList(Integer offset, Integer limit) {
@@ -95,6 +100,17 @@ public class BicycleServiceImpl implements BicycleService {
         destroyBicycle.setAddressY(y);
         destroyBicycle.setId(bicycleId);
         return bicycleDao.addDestroyBicycle(destroyBicycle);
+    }
+
+    @Override
+    public DestroyBicycle getDestroyBicycle(Integer bicycleId) {
+        DestroyBicycle destroyBicycle = bicycleDao.queryDestroyBicycleById(bicycleId);
+        return destroyBicycle;
+    }
+
+    @Override
+    public boolean setPrice(Constant constant) {
+       return constantDao.setConstant(constant);
     }
 
     @Override
