@@ -28,7 +28,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="order" items="${orderlist}">
+                <c:forEach var="order" items="${orderlist.items}">
                     <tr>
                         <td>${order.id}</td>
                         <td>${order.userId}</td>
@@ -57,6 +57,7 @@
                 </c:forEach>
                 </tbody>
             </table>
+            ${orderlist.getPageHtml("http://localhost:8080/aa/order/list")}
         </div>
     </div>
 </div>

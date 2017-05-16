@@ -3,6 +3,7 @@ package com.lk.ofo.web.controller;
 import com.alibaba.fastjson.JSON;
 import com.lk.ofo.dto.BaseResult;
 import com.lk.ofo.entity.Bicycle;
+import com.lk.ofo.entity.Page;
 import com.lk.ofo.enums.ConstantEnum;
 import com.lk.ofo.exception.BizException;
 import com.lk.ofo.exception.ServiceException;
@@ -38,9 +39,9 @@ public class BicycleController {
     @RequestMapping(path = "/list", method = {RequestMethod.GET})
     public String bicyclelist(Model model, Integer offset, Integer limit) {
         LOG.info("invoke----------/bicycle/list");
-        offset = offset == null ? 0 : offset;// 默认便宜0
-        limit = limit == null ? 50 : limit;// 默认展示50条
-        List<Bicycle> list = bicycleService.getBicycleList(offset, limit);
+        offset = offset == null ? 1 : offset;// 默认便宜0
+        limit = limit == null ? 10 : limit;// 默认展示50条
+        Page<Bicycle> list = bicycleService.getBicycleList(offset, limit);
         model.addAttribute("bicyclelist", list);
         return "bicycle/bicyclelist";
     }

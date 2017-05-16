@@ -3,6 +3,7 @@ package com.lk.ofo.service;
 import com.lk.ofo.entity.Bicycle;
 import com.lk.ofo.entity.Constant;
 import com.lk.ofo.entity.DestroyBicycle;
+import com.lk.ofo.entity.Page;
 import com.lk.ofo.entity.vo.BicyclesVO;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public interface BicycleService {
 	 * @param limit
 	 * @return
 	 */
-	List<Bicycle> getBicycleList(Integer offset,Integer limit);
+	Page<Bicycle> getBicycleList(Integer offset, Integer limit);
 
 	/**
 	 * 查看不同状态自行车

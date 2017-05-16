@@ -5,6 +5,7 @@ import com.lk.ofo.dao.OrderDao;
 import com.lk.ofo.dao.UserDao;
 import com.lk.ofo.entity.Bicycle;
 import com.lk.ofo.entity.Order;
+import com.lk.ofo.entity.Page;
 import com.lk.ofo.entity.User;
 import com.lk.ofo.entity.vo.OrderGraphVO;
 import com.lk.ofo.enums.ConstantEnum;
@@ -38,8 +39,14 @@ public class OrderServiceImpl implements OrderService {
     private UserDao userDao;
 
     @Override
-    public List<Order> getOrderList(Integer offset, Integer limit) {
-        return orderDao.queryAllOrder(offset, limit);
+    public Page<Order> getOrderList(Integer offset, Integer limit) {
+        Page<Order> page = new Page<Order>();
+        page.setCurrentIndex(offset);
+        page.setPageSize(limit);
+        page.setTotalNumber(orderDao.getCount());
+        List list = orderDao.queryAllOrder((offset - 1) * limit, limit);
+        page.setItems(list);
+        return page;
     }
 
     @Override
@@ -141,7 +148,7 @@ public class OrderServiceImpl implements OrderService {
         OrderGraphVO graphVO = new OrderGraphVO();
         int count = orderDao.getCount();
         //不同星期的数据
-        List<Order> orders = getOrderList(0, count);
+        List<Order> orders = orderDao.queryAllOrder(0, count);
         int[] list = new int[7];
         for (Order order : orders) {
             Date date = order.getStartTime();
@@ -169,15 +176,15 @@ public class OrderServiceImpl implements OrderService {
         }
         graphVO.setMonths(Arrays.asList(ArrayUtils.toObject(months)));
         //获取不同状态的自行车
-        int[] bicycles=new int[3];
-        List<Bicycle> bicycleList=bicycleDao.queryAllBicycle(0,bicycleDao.getCount());
-        for(Bicycle bicycle:bicycleList){
-            if(bicycle.getStatus().equals(ConstantEnum.BICYCLE_USING)){
-                bicycles[0]=bicycles[0]+1;
-            }else if(bicycle.getStatus().equals(ConstantEnum.BICYCLE_WORING)){
-                bicycles[1]=bicycles[1]+1;
-            }else if(bicycle.getStatus().equals(ConstantEnum.BICYCLE_READY)){
-                bicycles[2]=bicycles[2]+1;
+        int[] bicycles = new int[3];
+        List<Bicycle> bicycleList = bicycleDao.queryAllBicycle(0, bicycleDao.getCount());
+        for (Bicycle bicycle : bicycleList) {
+            if (bicycle.getStatus().equals(ConstantEnum.BICYCLE_USING)) {
+                bicycles[0] = bicycles[0] + 1;
+            } else if (bicycle.getStatus().equals(ConstantEnum.BICYCLE_WORING)) {
+                bicycles[1] = bicycles[1] + 1;
+            } else if (bicycle.getStatus().equals(ConstantEnum.BICYCLE_READY)) {
+                bicycles[2] = bicycles[2] + 1;
             }
         }
         graphVO.setBicycles(Arrays.asList(ArrayUtils.toObject(bicycles)));

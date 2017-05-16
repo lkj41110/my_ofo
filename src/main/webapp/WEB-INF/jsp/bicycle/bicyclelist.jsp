@@ -25,7 +25,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="bicycle" items="${bicyclelist}">
+						<c:forEach var="bicycle" items="${bicyclelist.items}">
 							<tr>
 								<td>${bicycle.id}</td>
 								<td>${bicycle.password}</td>
@@ -44,6 +44,7 @@
 						</c:forEach>
 					</tbody>
 				</table>
+                ${bicyclelist.getPageHtml("http://localhost:8080/aa/bicycle/list")}
 			</div>
 		</div>
 	</div>

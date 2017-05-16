@@ -1,9 +1,8 @@
 package com.lk.ofo.service;
 
 import com.lk.ofo.entity.Order;
+import com.lk.ofo.entity.Page;
 import com.lk.ofo.entity.vo.OrderGraphVO;
-
-import java.util.List;
 
 /**
  * 订单业务接口
@@ -16,11 +15,11 @@ public interface OrderService {
     /**
      * 查看全部订单
      *
-     * @param offset
+     * @param offset 页面
      * @param limit
      * @return
      */
-    List<Order> getOrderList(Integer offset, Integer limit);
+    Page<Order> getOrderList(Integer offset, Integer limit);
 
     /**
      * 根据订单号查询订单Id

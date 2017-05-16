@@ -2,9 +2,7 @@ package com.lk.ofo.service.impl;
 
 import com.lk.ofo.dao.BicycleDao;
 import com.lk.ofo.dao.ConstantDao;
-import com.lk.ofo.entity.Bicycle;
-import com.lk.ofo.entity.Constant;
-import com.lk.ofo.entity.DestroyBicycle;
+import com.lk.ofo.entity.*;
 import com.lk.ofo.entity.vo.BicyclesVO;
 import com.lk.ofo.exception.BizException;
 import com.lk.ofo.exception.ServiceException;
@@ -27,8 +25,14 @@ public class BicycleServiceImpl implements BicycleService {
     private ConstantDao constantDao;
 
     @Override
-    public List<Bicycle> getBicycleList(Integer offset, Integer limit) {
-        return bicycleDao.queryAllBicycle(offset, limit);
+    public Page<Bicycle> getBicycleList(Integer offset, Integer limit) {
+        Page<Bicycle> page = new Page();
+        page.setCurrentIndex(offset);
+        page.setPageSize(limit);
+        page.setTotalNumber(bicycleDao.getCount());
+        List list = bicycleDao.queryAllBicycle((offset - 1) * limit, limit);
+        page.setItems(list);
+        return page;
     }
 
     @Override
