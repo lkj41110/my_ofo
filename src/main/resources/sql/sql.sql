@@ -157,6 +157,19 @@ CREATE TABLE _maintain (
   DEFAULT CHARSET = utf8
   COMMENT = '维修表';
 
+-- 系统表
+CREATE TABLE _constant (
+  `cost1`        DOUBLE(5, 2) COMMENT '费用1',
+  `cost2`        DOUBLE(5, 2) COMMENT '费用2',
+  `cost3`        DOUBLE(5, 2) COMMENT '费用3'
+)
+  ENGINE = INNODB
+  AUTO_INCREMENT = 1000
+  DEFAULT CHARSET = utf8
+  COMMENT = '常量表';
+
+
+
 -- 消息表
 CREATE TABLE _message (
   `id`          INT        NOT NULL AUTO_INCREMENT
@@ -209,6 +222,7 @@ VALUES
   ('1005', '2444',30.310214,120.390321),
   ('1006', '2444',30.325,120.390331),
   ('1007', '2444',30.317950,120.389080);
+
 
 -- 插入消息列表
 INSERT INTO

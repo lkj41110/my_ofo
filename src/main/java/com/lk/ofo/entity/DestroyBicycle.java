@@ -27,13 +27,6 @@ public class DestroyBicycle extends Basis {
         this.number = number;
     }
 
-    //    public int getUserId() {
-//        return userId;
-//    }
-//
-//    public void setUserId(int userId) {
-//        this.userId = userId;
-//    }
 
     public String getStatus() {
         return status;

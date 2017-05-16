@@ -13,7 +13,6 @@
 				</a>
 					<ul class="dropdown-menu">
 						<li><a href="${pageContext.request.contextPath}/user/list">用户列表</a></li>
-						<li><a href="#">黑名单</a></li>
 					</ul></li>
 
 				<!--自行车 -->
@@ -33,7 +32,7 @@
 				</a>
 					<ul class="dropdown-menu">
 						<li><a href="${pageContext.request.contextPath}/order/list">订单列表</a></li>
-						<li><a href="#">手动订单</a></li>
+						<li><a href="${pageContext.request.contextPath}/order/graph1">订单统计</a></li>
 					</ul></li>
 
                 <!--设置-->
@@ -41,10 +40,9 @@
                                         data-toggle="dropdown">日常设置<b class="caret"></b>
                 </a>
                     <ul class="dropdown-menu">
-                        <li><a href="${pageContext.request.contextPath}/order/list">价格设置</a></li>
-                        <li><a href="${pageContext.request.contextPath}/order/list">内容发布</a></li>
-                        <li><a href="${pageContext.request.contextPath}/order/list">app内容设置</a></li>
-                        <li><a href="${pageContext.request.contextPath}/order/list">接口查看</a></li>
+                        <li><a href="${pageContext.request.contextPath}/own/price">价格设置</a></li>
+                        <li><a href="${pageContext.request.contextPath}/own/price">app内容设置</a></li>
+                        <li><a href="${pageContext.request.contextPath}/order/list">发送消息</a></li>
                     </ul></li>
 
 

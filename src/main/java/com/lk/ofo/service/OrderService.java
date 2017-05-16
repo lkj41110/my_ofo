@@ -1,6 +1,7 @@
 package com.lk.ofo.service;
 
 import com.lk.ofo.entity.Order;
+import com.lk.ofo.entity.vo.OrderGraphVO;
 
 import java.util.List;
 
@@ -62,4 +63,10 @@ public interface OrderService {
      * @return
      */
     Boolean payment(Integer orderId,Integer userId);
+
+    /**
+     * t统计
+     * @return
+     */
+    OrderGraphVO graph1();
 }

@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>用户列表</title>
+    <title></title>
     <%@include file="/WEB-INF/jsp/common/head.jsp" %>
 </head>
 <body>

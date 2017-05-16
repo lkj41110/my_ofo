@@ -65,6 +65,10 @@ public class PhoneUserController {
         Bicycle bicycle = bicycleService.getBicycleById(bicycleId);
         if (bicycle == null)
             return new BaseResult<Object>(false, "车牌号不存在");
+        DestroyBicycle destroyBicycle = bicycleService.getDestroyBicycle(bicycleId);
+        if(destroyBicycle!=null&&destroyBicycle.getNumber()>5){
+            return new BaseResult<Object>(false, "车辆已经被举报多次");
+        }
         //判断是否为double类型
         if ((x == null || y == null) || !StringUtils.isDouble(x) || !StringUtils.isDouble(y)) {
             return new BaseResult<Object>(false, "定位失败");
@@ -75,7 +79,7 @@ public class PhoneUserController {
         } catch (ServiceException e) {
             return new BaseResult<Object>(false, e.getMessage());
         }
-        return new BaseResult<Object>(true, order);
+        return new BaseResult<Object>(true,bicycle);
     }
 
     /**
@@ -204,7 +208,7 @@ public class PhoneUserController {
     }
 
     /**
-     * 验证
+     * 身份验证
      *
      * @return
      */
@@ -242,6 +246,4 @@ public class PhoneUserController {
 
     //TODO 推荐
 
-
-    //TODO 查看周围的车辆的信息
 }

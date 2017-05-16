@@ -21,7 +21,6 @@
 							<td>自行车密码</td>
 							<td>状态</td>
 							<td>创建时间</td>
-							<td>地区</td>
 							<td>操作</td>
 						</tr>
 					</thead>
@@ -36,7 +35,6 @@
 										test="${bicycle.status==4}">未使用</c:if></td>
 								<td><fmt:formatDate value="${bicycle.createTime}"
 										pattern="yyyy-MM-dd HH:mm:ss" /></td>
-								<td></td>
 								<td><a id="loginBtn" class="btn btn-success"
 									href="${pageContext.request.contextPath}/bicycle/detail?id=${bicycle.id}">修改</a>
 									<button type="button" class="btn btn-success"

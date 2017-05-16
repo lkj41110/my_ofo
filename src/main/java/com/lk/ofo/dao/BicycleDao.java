@@ -85,4 +85,10 @@ public interface BicycleDao {
      * @return
      */
     List<Bicycle> getBicycles(@Param("x") Double x,@Param("y")Double y);
+
+    /**
+     * 获取车辆数量
+     * @return
+     */
+    int getCount();
 }

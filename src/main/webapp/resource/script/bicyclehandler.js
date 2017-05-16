@@ -11,6 +11,9 @@ var bicyclehandler = {
         addBtn: function () {
             return bicyclehandler.URL.getProjectUrl() + '/bicycle/add';
         },
+        setPriceBtn: function () {
+            return bicyclehandler.URL.getProjectUrl() + '/own/setprice';
+        },
         // 获取项目名字名字
         getProjectUrl: function () {
             // 获取主机地址之后的目录，如： uimcardprj/share/meun.jsp
@@ -144,6 +147,21 @@ var bicyclehandler = {
 
 
         // addBicycle
+    },
+    //设置价格
+    setPriceBtn: function () {
+        $.post(bicyclehandler.URL.setPriceBtn(), {
+            cost1: $('#cost1')[0].value,
+            cost2: $('#cost2')[0].value,
+            cost3: $('#cost3')[0].value
+        }, function (result) {
+            if (result && result['success']) {
+                alert("修改成功");
+            } else {
+                alert(result['error']);
+            }
+
+        });
     }
 
 }
