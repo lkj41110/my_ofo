@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>用户列表</title>
+    <title>资料修改</title>
     <%@include file="/WEB-INF/jsp/common/head.jsp" %>
     <style>
         #myScrollspy {
