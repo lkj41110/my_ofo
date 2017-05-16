@@ -58,6 +58,12 @@
         AND address_Y between #{y}-0.06 and #{y}+0.06
     </select>
 
+    <!--车辆的总数-->
+    <select id="getCount" resultType="java.lang.Integer">
+        SELECT count(*)
+        FROM _bicycle ;
+    </select>
+
 
 
     <!-- ****损坏车辆Dao***-->
@@ -87,5 +93,7 @@
         WHERE
         id=#{id}
     </update>
+
+
 
 </mapper>

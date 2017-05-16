@@ -22,6 +22,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import static com.lk.ofo.util.DateUtil.getMonthNumber;
 import static com.lk.ofo.util.DateUtil.getWeekday;
 
 @Service
@@ -137,27 +138,49 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderGraphVO graph1() {
-        OrderGraphVO graphVO=new OrderGraphVO();
-        int count=orderDao.getCount();
+        OrderGraphVO graphVO = new OrderGraphVO();
+        int count = orderDao.getCount();
         //不同星期的数据
-        List<Order> orders=getOrderList(0,count);
-        int[] list=new int[7];
-        for(Order order :orders){
+        List<Order> orders = getOrderList(0, count);
+        int[] list = new int[7];
+        for (Order order : orders) {
             Date date = order.getStartTime();
             //获取天使
-            Integer i=getWeekday(date);
-            list[i]=++list[i];
+            Integer i = getWeekday(date);
+            list[i] = ++list[i];
         }
         graphVO.setWeek(Arrays.asList(ArrayUtils.toObject(list)));
 
         //所有价格的函数
-        List<Double> money=new ArrayList<>(count);
-        for(Order order :orders){
-            if(ConstantEnum.ORDER_COMPLETE.equals(order.getStatus())){
+        List<Double> money = new ArrayList<>(count);
+        for (Order order : orders) {
+            if (ConstantEnum.ORDER_COMPLETE.equals(order.getStatus())) {
                 money.add(order.getCost());
             }
         }
         graphVO.setMonney(money);
+
+        //获取12个月不同的类型
+        int[] months = new int[12];
+        for (Order order : orders) {
+            Date date = order.getCreateTime();
+            int month = getMonthNumber(date);
+            months[month] = ++months[month];
+        }
+        graphVO.setMonths(Arrays.asList(ArrayUtils.toObject(months)));
+        //获取不同状态的自行车
+        int[] bicycles=new int[3];
+        List<Bicycle> bicycleList=bicycleDao.queryAllBicycle(0,bicycleDao.getCount());
+        for(Bicycle bicycle:bicycleList){
+            if(bicycle.getStatus().equals(ConstantEnum.BICYCLE_USING)){
+                bicycles[0]=bicycles[0]+1;
+            }else if(bicycle.getStatus().equals(ConstantEnum.BICYCLE_WORING)){
+                bicycles[1]=bicycles[1]+1;
+            }else if(bicycle.getStatus().equals(ConstantEnum.BICYCLE_READY)){
+                bicycles[2]=bicycles[2]+1;
+            }
+        }
+        graphVO.setBicycles(Arrays.asList(ArrayUtils.toObject(bicycles)));
         return graphVO;
     }
 

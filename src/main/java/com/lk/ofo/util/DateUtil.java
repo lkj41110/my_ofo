@@ -264,4 +264,16 @@ public class DateUtil{
             return null;
         }
     }
+
+    public static Integer getMonthNumber(Date date){
+        try {
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(date);
+            Integer w = cal.get(Calendar.MONTH);
+            return w;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

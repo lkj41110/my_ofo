@@ -9,6 +9,8 @@ import java.util.List;
 public class OrderGraphVO{
     private List<Integer> week;
     private List<Double> monney;
+    private List<Integer> months;
+    private List<Integer> bicycles;
 
     public List<Integer> getWeek() {
         return week;
@@ -24,5 +26,21 @@ public class OrderGraphVO{
 
     public void setMonney(List<Double> monney) {
         this.monney = monney;
+    }
+
+    public List<Integer> getMonths() {
+        return months;
+    }
+
+    public void setMonths(List<Integer> months) {
+        this.months = months;
+    }
+
+    public List<Integer> getBicycles() {
+        return bicycles;
+    }
+
+    public void setBicycles(List<Integer> bicycles) {
+        this.bicycles = bicycles;
     }
 }

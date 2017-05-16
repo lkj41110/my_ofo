@@ -33,7 +33,7 @@ public class OrderController {
     public String orderlist(Model model, Integer offset, Integer limit) {
         LOG.info("invoke----------/bicycle/list");
         offset = offset == null ? 0 : offset;// 默认便宜0
-        limit = limit == null ? 50 : limit;// 默认展示50条
+        limit = limit == null ? 20 : limit;// 默认展示50条
         List<Order> list = orderService.getOrderList(offset, limit);
         model.addAttribute("orderlist", list);
         return "order/orderlist";

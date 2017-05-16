@@ -56,9 +56,10 @@
     }
 
     button3 = function () {
+        var Ys=${graphVO.months};
         kkk = {
             'Xs': [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]],
-            'Ys': [[11, 21, 32, 41, 36, 68, 11, 8, 15, 20,11,1]],
+            'Ys': [Ys],
             'classes': ['A', 'B'],
             'style': 'dot|line',
             'legendOuterBox': false
@@ -69,9 +70,10 @@
     }
 
     button4 = function () {
+        var bicycles=${graphVO.bicycles};
         s15 = new DVisual("myCanvas1");
         s15.addElement(new DVPieChart({'X':["正在使用","损坏","空闲"],
-            'Y':[2,3,4],
+            'Y':bicycles,
             'ring_ratio':0.5}))
         s15.draw();
     }
