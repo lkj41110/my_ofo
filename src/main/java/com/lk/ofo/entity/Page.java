@@ -97,7 +97,15 @@ public class Page<T> implements Serializable {
     }
 
     public String replaceUrl(String url, int page) {
-        return url != null && url.indexOf("?") == -1?url + "?" + INDEX + "=" + page:(url != null && url.indexOf("index=") == -1?url + "&" + INDEX + "=" + page:(url == null?"":url.replaceAll("index=\\d{1,}", INDEX + "=" + page)));
+        //http://localhost:8080/aa/order/list
+        if(url==null)
+            return null;
+        if(url.indexOf("?") == -1){
+            url=url + "?" + INDEX + "=" + page;
+        }else{
+            url=url.indexOf("index=") == -1?url + "&" + INDEX + "=" + page :(url == null?"":url.replaceAll("index=\\d{1,}", INDEX + "=" + page));
+        }
+        return url;
     }
 
     public String getPageHtml(String linkUrl) {
@@ -173,7 +181,7 @@ public class Page<T> implements Serializable {
             }
         }
 
-        if(this.currentIndex == totalPage) {
+        if(this.currentIndex >= totalPage) {
             str.append("<li class=\"disabled\"><a click_type=\"page-next\" class=\"next\">下一页</a></li>");
         } else {
             str.append("<li><a click_type= \"page-next\" class=\"next\" href=\"" + this.replaceUrl(linkUrl, this.currentIndex + 1) + "\">下一页</a></li>");

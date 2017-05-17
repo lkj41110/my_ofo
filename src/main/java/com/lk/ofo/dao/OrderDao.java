@@ -7,29 +7,30 @@ import java.util.List;
 
 public interface OrderDao {
 
-	/**
-	 * @param offset
-	 * @param limit
-	 * @return
-	 */
-	List<Order> queryAllOrder(@Param("offset") int offset, @Param("limit") int limit);
+    /**
+     * @param offset
+     * @param limit
+     * @return
+     */
+    List<Order> queryAllOrder(@Param("offset") int offset, @Param("limit") int limit, @Param("param") String sql);
 
-	
-	/**
-	 * 通过id查询订单
-	 * @param id
-	 * @return
-	 */
-	Order queryOrderById (int id);
-
-	/**
-	 * 添加Order
-	 * @return order
-	 */
-	Integer add(Order order);
 
     /**
+     * 通过id查询订单
      *
+     * @param id
+     * @return
+     */
+    Order queryOrderById(int id);
+
+    /**
+     * 添加Order
+     *
+     * @return order
+     */
+    Integer add(Order order);
+
+    /**
      * @param order
      * @return
      */
@@ -37,7 +38,8 @@ public interface OrderDao {
 
     /**
      * 获取条数
+     *
      * @return
      */
-    Integer getCount();
+    Integer getCount(@Param("param") String sql);
 }

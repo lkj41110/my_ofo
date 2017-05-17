@@ -7,6 +7,7 @@ import com.lk.ofo.entity.Bicycle;
 import com.lk.ofo.entity.Order;
 import com.lk.ofo.entity.Page;
 import com.lk.ofo.entity.User;
+import com.lk.ofo.entity.param.OrderParam;
 import com.lk.ofo.entity.vo.OrderGraphVO;
 import com.lk.ofo.enums.ConstantEnum;
 import com.lk.ofo.exception.ServiceException;
@@ -17,7 +18,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -39,12 +39,13 @@ public class OrderServiceImpl implements OrderService {
     private UserDao userDao;
 
     @Override
-    public Page<Order> getOrderList(Integer offset, Integer limit) {
+    public Page<Order> getOrderList(Integer offset, Integer limit, OrderParam param) {
         Page<Order> page = new Page<Order>();
         page.setCurrentIndex(offset);
         page.setPageSize(limit);
-        page.setTotalNumber(orderDao.getCount());
-        List list = orderDao.queryAllOrder((offset - 1) * limit, limit);
+        String sql=param.createQueryParam();
+        page.setTotalNumber(orderDao.getCount(sql));
+        List list = orderDao.queryAllOrder((offset - 1) * limit, limit , sql);
         page.setItems(list);
         return page;
     }
@@ -146,9 +147,9 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public OrderGraphVO graph1() {
         OrderGraphVO graphVO = new OrderGraphVO();
-        int count = orderDao.getCount();
+        int count = orderDao.getCount("1=1");
         //不同星期的数据
-        List<Order> orders = orderDao.queryAllOrder(0, count);
+        List<Order> orders = orderDao.queryAllOrder(0, count,"1=1");
         int[] list = new int[7];
         for (Order order : orders) {
             Date date = order.getStartTime();

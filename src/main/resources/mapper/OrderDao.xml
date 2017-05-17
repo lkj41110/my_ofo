@@ -4,6 +4,7 @@
     <select id="queryAllOrder" resultType="Order">
 		SELECT *
 		FROM _order
+		where ${param}
 		ORDER BY create_time DESC
 		limit #{offset},#{limit}
 	</select>
@@ -29,6 +30,7 @@
 
     <select id="getCount" resultType="java.lang.Integer">
         SELECT count(*)
-        FROM _ORDER ;
+        FROM _ORDER
+        WHERE ${param};
     </select>
 </mapper>

@@ -2,6 +2,7 @@ package com.lk.ofo.service;
 
 import com.lk.ofo.entity.Order;
 import com.lk.ofo.entity.Page;
+import com.lk.ofo.entity.param.OrderParam;
 import com.lk.ofo.entity.vo.OrderGraphVO;
 
 /**
@@ -19,7 +20,7 @@ public interface OrderService {
      * @param limit
      * @return
      */
-    Page<Order> getOrderList(Integer offset, Integer limit);
+    Page<Order> getOrderList(Integer offset, Integer limit , OrderParam orderParam);
 
     /**
      * 根据订单号查询订单Id

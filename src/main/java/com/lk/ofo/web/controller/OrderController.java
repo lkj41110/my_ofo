@@ -2,6 +2,7 @@ package com.lk.ofo.web.controller;
 
 import com.lk.ofo.entity.Order;
 import com.lk.ofo.entity.Page;
+import com.lk.ofo.entity.param.OrderParam;
 import com.lk.ofo.entity.vo.OrderGraphVO;
 import com.lk.ofo.service.OrderService;
 import org.slf4j.Logger;
@@ -29,12 +30,13 @@ public class OrderController {
      * @return
      */
     @RequestMapping(path = "/list", method = {RequestMethod.GET})
-    public String orderlist(Model model, Integer index, Integer limit) {
+    public String orderlist(Model model, Integer index, Integer limit , OrderParam orderParam) {
         LOG.info("invoke----------/bicycle/list");
         index = index == null ? 1 : index;// 默认便宜0
         limit = limit == null ? 10 : limit;// 默认展示50条
-        Page<Order> list = orderService.getOrderList(index, limit);
+        Page<Order> list = orderService.getOrderList(index, limit ,orderParam);
         model.addAttribute("orderlist", list);
+        model.addAttribute("orderParam",orderParam);
         return "order/orderlist";
     }
 
