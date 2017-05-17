@@ -32,16 +32,16 @@ public class BicycleController {
      * 查看所有的自行车列表
      *
      * @param model
-     * @param offset
+     * @param index
      * @param limit
      * @return
      */
     @RequestMapping(path = "/list", method = {RequestMethod.GET})
-    public String bicyclelist(Model model, Integer offset, Integer limit) {
+    public String bicyclelist(Model model, Integer index, Integer limit) {
         LOG.info("invoke----------/bicycle/list");
-        offset = offset == null ? 1 : offset;// 默认便宜0
+        index = index == null ? 1 : index;// 默认便宜0
         limit = limit == null ? 10 : limit;// 默认展示50条
-        Page<Bicycle> list = bicycleService.getBicycleList(offset, limit);
+        Page<Bicycle> list = bicycleService.getBicycleList(index, limit);
         model.addAttribute("bicyclelist", list);
         return "bicycle/bicyclelist";
     }

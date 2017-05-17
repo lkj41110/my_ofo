@@ -32,8 +32,8 @@ public class OrderDaoTest {
 
 	@Test
 	public void queryAllOrder(){
-		List<Order> orders=orderDao.queryAllOrder(0,15);
-		LOG.info(orders.toString());
+		List<Order> orders=orderDao.queryAllOrder(0,20,"1=1 and id = 1003");
+		LOG.info(orders.size()+" ");
 		LOG.info("-------------");
 	}
 	
@@ -46,7 +46,7 @@ public class OrderDaoTest {
 
     @Test
     public void getCount(){
-	    Integer a=orderDao.getCount();
+	    Integer a=orderDao.getCount("1=1");
         LOG.info(a.toString());
         LOG.info("-------------");
 

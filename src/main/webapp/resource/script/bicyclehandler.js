@@ -14,6 +14,9 @@ var bicyclehandler = {
         setPriceBtn: function () {
             return bicyclehandler.URL.getProjectUrl() + '/own/setprice';
         },
+        searchBtn: function () {
+            return bicyclehandler.URL.getProjectUrl() + '/bicycle/list?'+$('#id'.val);
+        },
         // 获取项目名字名字
         getProjectUrl: function () {
             // 获取主机地址之后的目录，如： uimcardprj/share/meun.jsp
@@ -89,7 +92,7 @@ var bicyclehandler = {
                     alert("密码必须为4位数字");
                     return false;
                 }
-                passwords.push(arrs[i].value);
+                passwords.push(value1);
             }
         }
         if (ids.length == 0) {
@@ -141,7 +144,7 @@ var bicyclehandler = {
             "</div> " +
             "<label class='col-sm-1 control-label'>密码</label> " +
             "<div class='col-sm-2'> " +
-            "<input type='text' class='form-control' id=add_pass name='password'>" +
+            "<input type='text' class='form-control' id=add_password name='password'>" +
             "</div>" +
             "</div>");
 

@@ -9,6 +9,7 @@ import com.lk.ofo.exception.ServiceException;
 import com.lk.ofo.service.BicycleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -118,6 +119,7 @@ public class BicycleServiceImpl implements BicycleService {
     }
 
     @Override
+    @Transactional
     public void addBicycle(List bicycles) {
         if (bicycles.size() == 0) {
             throw new ServiceException("添加列表为空");
