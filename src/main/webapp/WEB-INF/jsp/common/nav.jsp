@@ -41,7 +41,7 @@
                 </a>
                     <ul class="dropdown-menu">
                         <li><a href="${pageContext.request.contextPath}/own/price">价格设置</a></li>
-                        <li><a href="${pageContext.request.contextPath}/own/price">app内容设置</a></li>
+                        <li><a href="${pageContext.request.contextPath}/activity/list">活动设置</a></li>
                         <li><a href="${pageContext.request.contextPath}/order/list">发送消息</a></li>
                     </ul></li>
 

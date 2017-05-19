@@ -5,6 +5,9 @@ var messagehandler = {
         deleteBtn: function (id) {
             return messagehandler.URL.getProjectUrl() + '/message/notRealDelete?id=' + id;
         },
+        updateBtn: function () {
+            return messagehandler.URL.getProjectUrl() + '/activity/update';
+        },
         // 获取项目名字名字
         getProjectUrl: function () {
             // 获取主机地址之后的目录，如： uimcardprj/share/meun.jsp

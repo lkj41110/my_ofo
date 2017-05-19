@@ -1,7 +1,9 @@
 package com.lk.ofo.test.dao;
 
+import com.lk.ofo.dao.ActivityDao;
 import com.lk.ofo.dao.MessageDao;
 import com.lk.ofo.dao.UserDao;
+import com.lk.ofo.entity.Activity;
 import com.lk.ofo.entity.Message;
 import com.lk.ofo.entity.User;
 import org.junit.Test;
@@ -24,6 +26,9 @@ public class MessageDaoTest {
 
     @Autowired
     private MessageDao messageDao;
+
+    @Autowired
+    private ActivityDao activityDao;
 
 
     @Test
@@ -53,5 +58,24 @@ public class MessageDaoTest {
     public void deleteTest(){
        boolean flag = messageDao.delete(1004);
     }
+
+    @Test
+    public void queryAllActivity() {
+        List<Activity> activities=activityDao.queryAllActivity();
+        LOG.info(activities.size()+"");
+
+        Activity activity = activityDao.getActivityById(1001);
+        LOG.info(activity.toString());
+        LOG.info("-------------");
+    }
+
+    @Test
+    public void updateActivity() {
+        Activity activity=activityDao.getActivityById(1000);
+        activity.setTitle1("测试活动方法");
+        activityDao.updateActivity(activity);
+        LOG.info("-------------");
+    }
+
 
 }

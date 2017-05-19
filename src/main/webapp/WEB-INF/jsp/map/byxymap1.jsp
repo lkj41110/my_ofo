@@ -12,7 +12,7 @@
         }
 
         #allmap {
-            height: 400px;
+            height: 100%;
             width: 100%;
         }
 
@@ -37,8 +37,6 @@
     //地图初始化
     var bm = new BMap.Map("allmap");
     bm.centerAndZoom(ggPoint, 17);
-//    bm.addControl(new BMap.NavigationControl());
-    //批量坐标转换
 
     var pointsX =${bicyclesVO.listX};
     var pointsY =${bicyclesVO.listY};
@@ -46,7 +44,6 @@
     for(var i=0;i<pointsX.length;i++){
         points[i]=new BMap.Point(pointsY[i],pointsX[i]);
     }
-
 
     //地图初始化
     var bm = new BMap.Map("allmap");
@@ -66,5 +63,18 @@
         convertor.translate(points, 3, 5, translateCallback)
     }, 1000);
 
+    var size = new BMap.Size(10, 20);
+    bm.addControl(new BMap.CityListControl({
+        anchor: BMAP_ANCHOR_TOP_LEFT,
+        offset: size,
+        // 切换城市之间事件
+        // onChangeBefore: function(){
+        //    alert('before');
+        // },
+        // 切换城市之后事件
+        // onChangeAfter:function(){
+        //   alert('after');
+        // }
+    }));
 
 </script>
