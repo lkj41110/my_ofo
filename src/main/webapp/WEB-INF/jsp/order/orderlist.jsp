@@ -41,7 +41,7 @@
                     >
                 </div>
             </div>
-            <button onclick="search()">搜索</button>
+            <button class="btn btn-success" onclick="search()">搜索</button>
         </div>
 
         <div class="panel-body">

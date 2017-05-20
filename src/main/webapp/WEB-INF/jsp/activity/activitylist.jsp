@@ -38,13 +38,17 @@
                                 ${activity.content1}
                             </c:if>
                         </td>
-                        <td><fmt:formatDate value="${user.createTime}"
+                        <td><fmt:formatDate value="${activity.createTime}"
                                             pattern="yyyy-MM-dd HH:mm:ss"/></td>
                         <td>
                             <a class="btn btn-success"
                                href="${pageContext.request.contextPath}/activity/detail?id=${activity.id}">
                                 修改
                             </a>
+                            <button type="button" class="btn btn-success"
+                                    onclick="messagehandler.deleteActivityBtn(${activity.id});">
+                                删除
+                            </button>
                         </td>
                     </tr>
                 </c:forEach>
@@ -54,4 +58,6 @@
     </div>
 </div>
 </body>
+<script src="<%=path%>/resource/script/messagehandler.js"
+        type="text/javascript"></script>
 </html>

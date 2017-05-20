@@ -15,7 +15,10 @@ var bicyclehandler = {
             return bicyclehandler.URL.getProjectUrl() + '/own/setprice';
         },
         searchBtn: function () {
-            return bicyclehandler.URL.getProjectUrl() + '/bicycle/list?'+$('#id'.val);
+            return bicyclehandler.URL.getProjectUrl() + '/bicycle/list?' + $('#id'.val);
+        },
+        updateActivityBtn: function () {
+            return bicyclehandler.URL.getProjectUrl() + '/activity/update';
         },
         // 获取项目名字名字
         getProjectUrl: function () {
@@ -132,10 +135,10 @@ var bicyclehandler = {
     },
     //添加一行
     addRowBtn: function () {
-        add_index=1;
+        add_index = 1;
         add_index++;
-        var add_id="id"+add_index;
-        var add_pass="password"+add_index;
+        var add_id = "id" + add_index;
+        var add_pass = "password" + add_index;
         $("#addBicycle").append(
             "<div class='form-group'>" +
             "<label class='col-sm-3 control-label'>车牌号</label>" +
@@ -165,6 +168,22 @@ var bicyclehandler = {
             }
 
         });
-    }
+    },
+    updateActivityBtn: function () {
+        $.post(bicyclehandler.URL.updateActivityBtn(), {
+            id: $('#id').val(),
+            tIndex1: $('#tIndex1').val(),
+            title1: $('#title1').val(),
+            content1: $('#content1').val()
+        }, function (result) {
+            if (result && result['success']) {
+                alert("修改成功");
+                window.location.reload();
+            } else {
+                alert(result['error']);
+            }
+        });
+    },
+
 
 }

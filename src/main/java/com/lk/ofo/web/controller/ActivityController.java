@@ -49,6 +49,15 @@ public class ActivityController {
         return "activity/activitylist";
     }
 
+
+    @RequestMapping(path = "/add", method = {RequestMethod.GET})
+    public String addToJsp(HttpSession session, Model model) {
+        LOG.info("invoke----------/activity/addToJsp");
+        return "activity/add";
+    }
+
+
+
     /**
      * 查看细节
      *
@@ -84,5 +93,35 @@ public class ActivityController {
     public BaseResult<Object> update(HttpSession session, Model model, Activity activity) {
         LOG.info("invoke----------/activity/update");
         return new BaseResult<Object>(activityService.updateActivity(activity), null);
+    }
+
+    /**
+     * 删除
+     *
+     * @param session
+     * @return
+     */
+    @RequestMapping(path = "/delete", method = RequestMethod.POST)
+    @ResponseBody
+    public BaseResult<Object> delete(HttpSession session, Model model, Integer id) {
+        LOG.info("invoke----------/activity/delete");
+        if(id==null)
+        {
+            return new BaseResult<Object>(false, "不存在订单");
+        }
+        return new BaseResult<Object>(activityService.deleteActivity(id), null);
+    }
+
+    /**
+     * 添加
+     *
+     * @param session
+     * @return
+     */
+    @RequestMapping(path = "/add", method = RequestMethod.POST)
+    @ResponseBody
+    public BaseResult<Object> add(HttpSession session, Model model, Activity activity) {
+        LOG.info("invoke----------/activity/add");
+        return new BaseResult<Object>(activityService.addActivity(activity), null);
     }
 }

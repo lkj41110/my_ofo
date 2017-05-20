@@ -29,4 +29,18 @@ public interface ActivityDao {
      * @return
      */
     boolean updateActivity(Activity activity);
+
+    /**
+     * 删除活动
+     * @param id
+     * @return
+     */
+    boolean deleteActivity(int id);
+
+    /**
+     * 添加
+     * @param activity
+     * @return
+     */
+    boolean addActivity(Activity activity);
 }

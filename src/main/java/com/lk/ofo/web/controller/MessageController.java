@@ -4,7 +4,6 @@ import com.lk.ofo.dto.BaseResult;
 import com.lk.ofo.entity.Message;
 import com.lk.ofo.entity.User;
 import com.lk.ofo.entity.vo.MessageVO;
-import com.lk.ofo.enums.ConstantEnum;
 import com.lk.ofo.service.MessageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.lk.ofo.service.OrderService;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 

@@ -77,5 +77,11 @@ public class MessageDaoTest {
         LOG.info("-------------");
     }
 
+    @Test
+    public void deleteActivity() {
+        activityDao.deleteActivity(1000);
+        LOG.info("-------------");
+    }
+
 
 }

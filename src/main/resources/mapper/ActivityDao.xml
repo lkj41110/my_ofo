@@ -23,4 +23,15 @@
         id=#{id}
     </update>
 
+    <delete id="deleteActivity">
+        DELETE FROM _activity
+        WHERE id=#{id}
+    </delete>
+
+    <insert id="addActivity">
+        INSERT INTO
+        _activity(content1,title1,t_index1)
+        values(#{content1},#{title1},#{tIndex1})
+    </insert>
+
 </mapper>

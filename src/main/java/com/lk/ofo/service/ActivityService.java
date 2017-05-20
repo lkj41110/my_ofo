@@ -26,4 +26,18 @@ public interface ActivityService {
      * @return
      */
     boolean updateActivity(Activity activity);
+
+    /**
+     * 删除活动
+     * @param id
+     * @return
+     */
+    boolean deleteActivity(Integer id);
+
+    /**
+     * 添加活动
+     * @param activity
+     * @return
+     */
+    boolean addActivity(Activity activity);
 }
