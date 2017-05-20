@@ -8,7 +8,6 @@
 </head>
 <body>
 	<%@include file="/WEB-INF/jsp/common/nav.jsp"%>
-	<div class="container">
-	</div>
+        <img src="<%=path%>/image/index2.png" alt="" width="100%" height="100%">
 </body>
 </html>
