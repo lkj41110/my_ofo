@@ -26,16 +26,16 @@ public class UserDaoTest {
 	@Autowired
 	private UserDao userDao;
 
-	@Test
-	public void queryUserByPhoneAndPassword() {
-		User user=userDao.queryUserByPhoneAndPassword("18758114722", "123456");
-		LOG.info("-------------");
-	}
+//	@Test
+//	public void queryUserByPhoneAndPassword() {
+//		User user=userDao.queryUserByPhoneAndPassword("18758114722", "123456");
+//		LOG.info("-------------");
+//	}
 
 	@Test
 	public void queryAllUser(){
-		List<User> users=userDao.queryAllUser(0, 2);
-		LOG.info(users.toString());
+//		List<User> users=userDao.queryAllUser(0, 2);
+//		LOG.info(users.toString());
 		LOG.info("-------------");
 	}
 	

@@ -1,10 +1,10 @@
 package com.lk.ofo.service;
 
+import com.lk.ofo.entity.Page;
 import com.lk.ofo.entity.User;
 import com.lk.ofo.entity.User2;
+import com.lk.ofo.entity.param.UserParam;
 import com.lk.ofo.entity.vo.UserVO;
-
-import java.util.List;
 
 /**
  * 用户业务接口
@@ -30,7 +30,7 @@ public interface UserService {
      * @param limit
      * @return
      */
-    List<User> getUserList(Integer offset, Integer limit);
+    Page<User> getUserList(Integer offset, Integer limit, UserParam userParam);
 
     /**
      * 通过id查找用户

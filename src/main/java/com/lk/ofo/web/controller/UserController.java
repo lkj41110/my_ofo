@@ -1,7 +1,9 @@
 package com.lk.ofo.web.controller;
 
 import com.lk.ofo.dto.BaseResult;
+import com.lk.ofo.entity.Page;
 import com.lk.ofo.entity.User;
+import com.lk.ofo.entity.param.UserParam;
 import com.lk.ofo.enums.ConstantEnum;
 import com.lk.ofo.service.UserService;
 import org.slf4j.Logger;
@@ -14,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 @Controller
 @RequestMapping("/user")
@@ -29,17 +30,18 @@ public class UserController {
 	 * 查询所有用户
 	 * 
 	 * @param model
-	 * @param offset
+	 * @param index
 	 * @param limit
 	 * @return
 	 */
 	@RequestMapping(path = "/list", method = { RequestMethod.GET })
-	public String userlist(Model model, Integer offset, Integer limit) {
+	public String userlist(Model model, Integer index, Integer limit, UserParam userParam) {
 		LOG.info("invoke----------/user/list");
-		offset = offset == null ? 0 : offset;// 默认便宜0
-		limit = limit == null ? 50 : limit;// 默认展示50条
-		List<User> list = userService.getUserList(offset, limit);
+        index = index == null ? 1 : index;// 默认便宜0
+        limit = limit == null ? 10 : limit;// 默认展示50条
+		Page<User> list = userService.getUserList(index, limit,userParam);
 		model.addAttribute("userlist", list);
+		model.addAttribute("userParam",userParam);
 		return "user/userlist";
 	}
 

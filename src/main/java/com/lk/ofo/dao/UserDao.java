@@ -1,11 +1,10 @@
 package com.lk.ofo.dao;
 
-import java.util.List;
-
+import com.lk.ofo.entity.User;
 import com.lk.ofo.entity.User2;
 import org.apache.ibatis.annotations.Param;
 
-import com.lk.ofo.entity.User;
+import java.util.List;
 
 public interface UserDao {
 
@@ -24,7 +23,9 @@ public interface UserDao {
      * @param limit
      * @return
      */
-    List<User> queryAllUser(@Param("offset") int offset, @Param("limit") int limit);
+    List<User> queryAllUser(@Param("offset") int offset, @Param("limit") int limit, @Param("param") String sql);
+
+
 
     /**
      * 通过id找用户
@@ -54,4 +55,10 @@ public interface UserDao {
      */
     Boolean update2(User2 user);
 
+    /**
+     * 获取条数
+     *
+     * @return
+     */
+    Integer getCount(@Param("param") String sql);
 }

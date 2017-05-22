@@ -1,8 +1,11 @@
 package com.lk.ofo.service.impl;
 
 import com.lk.ofo.dao.UserDao;
+import com.lk.ofo.entity.Order;
+import com.lk.ofo.entity.Page;
 import com.lk.ofo.entity.User;
 import com.lk.ofo.entity.User2;
+import com.lk.ofo.entity.param.UserParam;
 import com.lk.ofo.entity.vo.UserVO;
 import com.lk.ofo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +27,15 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<User> getUserList(Integer offset, Integer limit) {
-		List<User> list = userDao.queryAllUser(offset, limit);
-		return list;
+	public Page<User> getUserList(Integer offset, Integer limit, UserParam param) {
+        Page<User> page = new Page<User>();
+        page.setCurrentIndex(offset);
+        page.setPageSize(limit);
+        String sql=param.createQueryParam();
+        page.setTotalNumber(userDao.getCount(sql));
+        List list = userDao.queryAllUser((offset - 1) * limit, limit , sql);
+        page.setItems(list);
+        return page;
 	}
 
 	@Override

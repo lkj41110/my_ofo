@@ -35,11 +35,6 @@
                            placeholder="消费" value="${orderParam.cost}"
                     >
                 </div>
-                <div class="col-sm-2">
-                    <input type="text" class="form-control" id="oldpassword" name="password"
-                           placeholder="状态"
-                    >
-                </div>
             </div>
             <button class="btn btn-success" onclick="search()">搜索</button>
         </div>
