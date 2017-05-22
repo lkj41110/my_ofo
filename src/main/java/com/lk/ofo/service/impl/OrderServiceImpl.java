@@ -118,7 +118,7 @@ public class OrderServiceImpl implements OrderService {
         order.setEndTime(new Date());
         order.setUpdateTime(new Date());
         //计算价格
-        order.setCost(DateUtil.dateSubtractOfMin(order.getStartTime(), order.getEndTime()) * ConstantEnum.PRICE);
+        order.setCost(DateUtil.dateSubtractOfMin(order.getStartTime(), order.getEndTime())* ConstantEnum.PRICE);
         return orderDao.update(order);
     }
 
@@ -190,6 +190,11 @@ public class OrderServiceImpl implements OrderService {
         }
         graphVO.setBicycles(Arrays.asList(ArrayUtils.toObject(bicycles)));
         return graphVO;
+    }
+
+    @Override
+    public Integer getCount() {
+        return orderDao.getCount("1=1");
     }
 
 

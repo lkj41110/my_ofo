@@ -159,16 +159,14 @@ CREATE TABLE _maintain (
 
 -- 系统表
 CREATE TABLE _constant (
-  `cost1`        DOUBLE(5, 2) COMMENT '费用1',
-  `cost2`        DOUBLE(5, 2) COMMENT '费用2',
-  `cost3`        DOUBLE(5, 2) COMMENT '费用3'
+  `cost1` DOUBLE(5, 2) COMMENT '费用1',
+  `cost2` DOUBLE(5, 2) COMMENT '费用2',
+  `cost3` DOUBLE(5, 2) COMMENT '费用3'
 )
   ENGINE = INNODB
   AUTO_INCREMENT = 1000
   DEFAULT CHARSET = utf8
   COMMENT = '常量表';
-
-
 
 -- 消息表
 CREATE TABLE _message (
@@ -198,6 +196,29 @@ CREATE TABLE _message (
   DEFAULT CHARSET = utf8
   COMMENT = '消息表';
 
+-- 活动
+CREATE TABLE `_activity` (
+  `id`          INT(11)   NOT NULL AUTO_INCREMENT
+  COMMENT '活动ID',
+  `title`       TEXT      NOT NULL
+  COMMENT '标题',
+  `content`     TEXT      NOT NULL
+  COMMENT '内容',
+  `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+  COMMENT '创建时间',
+  `del_time`    DATETIME           DEFAULT NULL
+  COMMENT '删除时间',
+  `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+  COMMENT '更新时间',
+  `t_index`       INT(11)            DEFAULT '10'
+  COMMENT '排序',
+  PRIMARY KEY (`id`)
+)
+  ENGINE = InnoDB
+  AUTO_INCREMENT = 1001
+  DEFAULT CHARSET = utf8
+  COMMENT = '活动表';
+
 -- 插入用户
 INSERT INTO
   _user (name, password, phone, grade)
@@ -213,16 +234,15 @@ WHERE id = '1000';
 
 -- 自行车表
 INSERT INTO
-  _bicycle (id, password,address_X,address_Y)
+  _bicycle (id, password, address_X, address_Y)
 VALUES
-  ('1001', '1111',30.317233,120.389964),
-  ('1002', '2222',30.317513,120.389064),
-  ('1003', '3333',30.317423,120.389080),
-  ('1004', '2444',30.317340,120.390123),
-  ('1005', '2444',30.310214,120.390321),
-  ('1006', '2444',30.325,120.390331),
-  ('1007', '2444',30.317950,120.389080);
-
+  ('1001', '1111', 30.317233, 120.389964),
+  ('1002', '2222', 30.317513, 120.389064),
+  ('1003', '3333', 30.317423, 120.389080),
+  ('1004', '2444', 30.317340, 120.390123),
+  ('1005', '2444', 30.310214, 120.390321),
+  ('1006', '2444', 30.325, 120.390331),
+  ('1007', '2444', 30.317950, 120.389080);
 
 -- 插入消息列表
 INSERT INTO

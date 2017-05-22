@@ -82,9 +82,6 @@
                                     test="${order.status==4}">已作废</c:if></td>
                             <td><a id="loginBtn" class="btn btn-success"
                                    href="${pageContext.request.contextPath}/bicycle/detail?id=${bicycle.id}">修改</a>
-                                <button type="button" id="loginBtn" class="btn btn-success"
-                                        onclick="bicyclehandler.delBtn(${bicycle.id},${bicycle.status});">
-                                    删除
                                 </button>
                             </td>
                         </tr>

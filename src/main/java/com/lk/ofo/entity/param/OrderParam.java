@@ -8,6 +8,7 @@ public class OrderParam {
     private String userId;
     private String bicycleId;
     private String cost;
+    private String status;
 
     public String createQueryParam() {
         String sql = "1=1 ";
@@ -22,6 +23,9 @@ public class OrderParam {
         }
         if (cost != null) {
             sql+=" and cost = " + cost;
+        }
+        if(status!=null){
+            sql+=" and status = " + status;
         }
         return sql;
     }
@@ -57,5 +61,13 @@ public class OrderParam {
 
     public void setCost(String cost) {
         this.cost = cost;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

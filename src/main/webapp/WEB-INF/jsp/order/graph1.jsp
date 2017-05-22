@@ -18,10 +18,9 @@
             </div>
             <div class="btn-group">
                 <button type="button4" class="btn btn-default" onclick="button4()">车辆损坏比例</button>
-                <button type="button" class="btn btn-default">按钮 5</button>
+                <button type="button" class="btn btn-default" onclick="button5()">关系图(规划)</button>
             </div>
         </div>
-
         <canvas id="myCanvas1" height="550px" width="1000px"></canvas>
     </div>
 </div>
@@ -56,7 +55,7 @@
     }
 
     button3 = function () {
-        var Ys=${graphVO.months};
+        var Ys =${graphVO.months};
         kkk = {
             'Xs': [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]],
             'Ys': [Ys],
@@ -70,11 +69,25 @@
     }
 
     button4 = function () {
-        var bicycles=${graphVO.bicycles};
+        var bicycles =${graphVO.bicycles};
         s15 = new DVisual("myCanvas1");
-        s15.addElement(new DVPieChart({'X':["正在使用","损坏","空闲"],
-            'Y':bicycles,
-            'ring_ratio':0.5}))
+        s15.addElement(new DVPieChart({
+            'X': ["正在使用", "损坏", "空闲"],
+            'Y': bicycles,
+            'ring_ratio': 0.5
+        }))
+        s15.draw();
+    }
+
+    button5 = function () {
+        s15 = new DVisual("myCanvas1");
+        s15.addElement(new DVGraph({'nodes':["A","B","C","D","E","F","G","H","I","J","K","L","M","Ns","O","P","Q","R","S","T","U","V","W","X","Y","Z"],
+            'edges':[[0,1],[1,3],[2,1],[1,4],[1,5],[1,6],[1,7],[1,8],[1,9],[1,10],[1,11],[1,12],[7,13],[3,5],[4,7],[7,2],[7,14],[7,15],[7,16],[1,1],[1,25],[16,17],[16,18],[16,19],[16,20],[20,21],[16,22],[16,23],[16,24],[16,25]],
+            'style':'undirected',
+            'distance':'median',
+            'color':new DVColor(111,111,111),
+            'ColorPattern':[[new DVColor(255,0,0,1),1,16,7]]}))
+
         s15.draw();
     }
 

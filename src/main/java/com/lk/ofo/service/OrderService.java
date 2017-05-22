@@ -69,4 +69,10 @@ public interface OrderService {
      * @return
      */
     OrderGraphVO graph1();
+
+    /**
+     *
+     * @return
+     */
+    Integer getCount();
 }

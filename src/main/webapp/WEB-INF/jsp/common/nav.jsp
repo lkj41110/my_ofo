@@ -3,7 +3,7 @@
 <nav class="navbar navbar-default" role="navigation">
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="#">ofo后台</a>
+			<a class="navbar-brand" href="../index.jsp">ofo后台</a>
 		</div>
 		<div>
 			<!--向左对齐-->
@@ -42,20 +42,20 @@
                     <ul class="dropdown-menu">
                         <li><a href="${pageContext.request.contextPath}/own/price">价格设置</a></li>
                         <li><a href="${pageContext.request.contextPath}/activity/list">活动设置</a></li>
-                        <li><a href="${pageContext.request.contextPath}/order/list">发送消息</a></li>
+                        <li><a href="${pageContext.request.contextPath}/activity/add">添加活动</a></li>
                     </ul></li>
 
 
 			</ul>
-			<div>
-				<form class="navbar-form navbar-left" role="search">
-					<div class="form-group">
-						<input type="text" size="40" class="form-control"
-							placeholder="Search">
-					</div>
-					<button type="submit" class="btn btn-default">搜索</button>
-				</form>
-			</div>
+			<%--<div>--%>
+				<%--<form class="navbar-form navbar-left" role="search">--%>
+					<%--<div class="form-group">--%>
+						<%--<input type="text" size="40" class="form-control"--%>
+							<%--placeholder="Search">--%>
+					<%--</div>--%>
+					<%--<button type="submit" class="btn btn-default">搜索</button>--%>
+				<%--</form>--%>
+			<%--</div>--%>
 			<!--向右对齐-->
 			<ul class="nav navbar-nav navbar-right">
 				<!-- 登陆情况 -->

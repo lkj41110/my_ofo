@@ -2,6 +2,9 @@
 <%@include file="/WEB-INF/jsp/common/tag.jsp"%>
 <!DOCTYPE html>
 <html>
-<head>
-<title>错误页面</title> ${error}
+
+<body class="error_page">
+系统异常
+${error}
+</body>
 </html>

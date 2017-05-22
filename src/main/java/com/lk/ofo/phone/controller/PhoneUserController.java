@@ -2,8 +2,11 @@ package com.lk.ofo.phone.controller;
 
 import com.lk.ofo.dto.BaseResult;
 import com.lk.ofo.entity.*;
+import com.lk.ofo.entity.param.OrderParam;
+import com.lk.ofo.entity.vo.StartOrderVO;
 import com.lk.ofo.entity.vo.UserVO;
 import com.lk.ofo.exception.ServiceException;
+import com.lk.ofo.service.ActivityService;
 import com.lk.ofo.service.BicycleService;
 import com.lk.ofo.service.OrderService;
 import com.lk.ofo.service.UserService;
@@ -17,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/phone")
 public class PhoneUserController {
@@ -29,6 +34,9 @@ public class PhoneUserController {
 
     @Autowired
     OrderService orderService;
+
+    @Autowired
+    ActivityService activityService;
 
     @RequestMapping(path = "/login", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
@@ -73,13 +81,15 @@ public class PhoneUserController {
         if ((x == null || y == null) || !StringUtils.isDouble(x) || !StringUtils.isDouble(y)) {
             return new BaseResult<Object>(false, "定位失败");
         }
-        Order order;
+        StartOrderVO startOrderVO=new StartOrderVO();
         try {
-            order = orderService.createOrder(userId, bicycleId, x, y);
+            Order order = orderService.createOrder(userId, bicycleId, x, y);
+            startOrderVO.setOrder(order);
+            startOrderVO.setBicycle(bicycle);
         } catch (ServiceException e) {
             return new BaseResult<Object>(false, e.getMessage());
         }
-        return new BaseResult<Object>(true,bicycle);
+        return new BaseResult<Object>(true, startOrderVO);
     }
 
     /**
@@ -107,11 +117,10 @@ public class PhoneUserController {
         boolean flag = false;
         try {
             flag = orderService.endOrder(orderId, userId, bicycleId, x, y);
-
         } catch (ServiceException e) {
             return new BaseResult<Object>(false, e.getMessage());
         }
-        return new BaseResult<Object>(true, flag);
+        return new BaseResult<Object>(true, orderService.getOrder(orderId));
     }
 
     /**
@@ -244,6 +253,27 @@ public class PhoneUserController {
         return new BaseResult<Object>(true, null);
     }
 
-    //TODO 推荐
+    @RequestMapping(path = "/activity/getActivityList", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public BaseResult<Object> getActivityList(String phone, String password) {
+        LOG.info("invoke----------/phone/activity/activitylist---***");
+        List<Activity> list=activityService.getActivityList();
+        return new BaseResult<Object>(true, list);
+    }
+
+    @RequestMapping(path = "/order/getOrders", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public BaseResult<Object> getOrders(Integer userId) {
+        LOG.info("invoke----------/phone/user/getBicycles---***");
+        if(userId==null){
+            return new BaseResult<Object>(false, "获取订单失败");
+        }
+        OrderParam orderParam=new OrderParam();
+        orderParam.setUserId(userId+"");
+        orderParam.setStatus("3");
+        Page<Order> page= orderService.getOrderList(1,orderService.getCount(),orderParam);
+        return new BaseResult<Object>(true, page.getItems());
+    }
+
 
 }
