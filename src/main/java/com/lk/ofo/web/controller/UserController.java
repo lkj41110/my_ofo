@@ -3,6 +3,7 @@ package com.lk.ofo.web.controller;
 import com.lk.ofo.dto.BaseResult;
 import com.lk.ofo.entity.Page;
 import com.lk.ofo.entity.User;
+import com.lk.ofo.entity.User2;
 import com.lk.ofo.entity.param.UserParam;
 import com.lk.ofo.enums.ConstantEnum;
 import com.lk.ofo.service.UserService;
@@ -91,7 +92,9 @@ public class UserController {
 			model.addAttribute("error", "请查看正确的用户");
 			return "common/error";
 		}
-		model.addAttribute("user", user);
+        User2 user2=userService.getUser2ById(id);
+		model.addAttribute("user_d", user);
+		model.addAttribute("user2_d", user2);
 		return "user/update";
 	}
 

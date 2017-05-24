@@ -54,6 +54,8 @@ public class OwnController {
         if (user == null) {
             session.setAttribute("error", "请先登入");
         }
+        Constant constant = bicycleService.getPrice();
+        session.setAttribute("constant", constant);
         return "own/priceset";
     }
 

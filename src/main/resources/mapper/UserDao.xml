@@ -59,7 +59,13 @@
     <select id="getCount" resultType="java.lang.Integer">
         SELECT count(*)
         FROM _user
-        WHERE ${param};
+        WHERE ${param}
     </select>
+
+
+    <insert id="addUser2">
+        INSERT _user2(id)
+        values(#{id})
+    </insert>
 
 </mapper>

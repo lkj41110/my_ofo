@@ -119,6 +119,16 @@ public class BicycleServiceImpl implements BicycleService {
     }
 
     @Override
+    public List<DestroyBicycle> getDestroyBicycleLists() {
+        return bicycleDao.getDestroyBicycleList();
+    }
+
+    @Override
+    public Constant getPrice() {
+        return constantDao.getConstant();
+    }
+
+    @Override
     @Transactional
     public void addBicycle(List bicycles) {
         if (bicycles.size() == 0) {

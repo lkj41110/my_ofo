@@ -24,6 +24,13 @@ public interface OrderDao {
     Order queryOrderById(int id);
 
     /**
+     *
+     * @param id
+     * @return
+     */
+    List<Order> queryOrderByBicycle(int id);
+
+    /**
      * 添加Order
      *
      * @return order

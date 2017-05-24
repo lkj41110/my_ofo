@@ -16,10 +16,10 @@ public class OrderParam {
             sql+=" and id = " + id;
         }
         if (userId != null) {
-            sql+=" and user_id = " + userId;
+            sql+=" and user_id like '%" + userId+"%'";
         }
         if (bicycleId != null) {
-            sql+=" and bicycle_id = " + bicycleId;
+            sql+=" and bicycle_id like '%" + bicycleId+"%'";
         }
         if (cost != null) {
             sql+=" and cost = " + cost;

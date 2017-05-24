@@ -18,7 +18,7 @@
             </div>
             <div class="btn-group">
                 <button type="button4" class="btn btn-default" onclick="button4()">车辆损坏比例</button>
-                <button type="button" class="btn btn-default" onclick="button5()">关系图(规划)</button>
+                <button type="button5" class="btn btn-default" onclick="button5()">关系图(规划)</button>
             </div>
         </div>
         <canvas id="myCanvas1" height="550px" width="1000px"></canvas>
@@ -81,14 +81,20 @@
 
     button5 = function () {
         s15 = new DVisual("myCanvas1");
-        s15.addElement(new DVGraph({'nodes':["A","B","C","D","E","F","G","H","I","J","K","L","M","Ns","O","P","Q","R","S","T","U","V","W","X","Y","Z"],
-            'edges':[[0,1],[1,3],[2,1],[1,4],[1,5],[1,6],[1,7],[1,8],[1,9],[1,10],[1,11],[1,12],[7,13],[3,5],[4,7],[7,2],[7,14],[7,15],[7,16],[1,1],[1,25],[16,17],[16,18],[16,19],[16,20],[20,21],[16,22],[16,23],[16,24],[16,25]],
-            'style':'undirected',
-            'distance':'median',
-            'color':new DVColor(111,111,111),
-            'ColorPattern':[[new DVColor(255,0,0,1),1,16,7]]}))
+        var list1 =${graphVO.dBicycle.get("1")};
+        <%--var list2 =${graphVO.dBicycle.get("2")};--%>
+        var list3 =${graphVO.dBicycle.get("3")};
 
+        s15.addElement(new DVGraph({
+            'nodes': ["A", "自1", "C", "D", "E", "F", "G", "自2", "I", "J", "K", "L", "M", "Ns", "O", "P", "自3", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
+            'edges': [[0, 1], [1, 3], [2, 1], [1, 4], [1, 5], [1, 6], [1, 8], [1, 9], [1, 10], [1, 11], [1, 12], [7, 13], [4, 7], [7, 2], [7, 14], [7, 15], [1, 25], [16, 17], [16, 18], [16, 19], [16, 20], [1, 21], [16, 22], [16, 23], [16, 24], [16, 25]],
+            'style': 'directed',
+            'distance': 'median',
+            'color': new DVColor(111, 111, 111),
+            'ColorPattern': [[new DVColor(255, 0, 0, 1), 1, 16, 7]]
+        }))
         s15.draw();
+
     }
 
 </script>

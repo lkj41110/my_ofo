@@ -163,6 +163,7 @@ var bicyclehandler = {
         }, function (result) {
             if (result && result['success']) {
                 alert("修改成功");
+                window.location.reload();
             } else {
                 alert(result['error']);
             }

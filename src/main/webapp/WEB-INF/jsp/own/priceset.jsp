@@ -22,6 +22,8 @@
                                placeholder="每分钟结算，单位为元"
                         >
                     </div>
+                    <label class="control-label"> 目前价格每分钟${constant.cost1}元</label>
+
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">17点到19点价格</label>
@@ -30,6 +32,7 @@
                                placeholder="每分钟结算，单位为元"
                         >
                     </div>
+                    <label class="control-label"> 目前价格每分钟${constant.cost2}元</label>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">其余时间段价格</label>
@@ -38,6 +41,7 @@
                                placeholder="每分钟结算，单位为元"
                         >
                     </div>
+                    <label class="control-label"> 目前价格每分钟${constant.cost3}元</label>
                 </div>
 
                 <div class="form-group">

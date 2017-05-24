@@ -10,19 +10,23 @@ public class UserParam {
     private String card;
 
     public String createQueryParam() {
-        String sql="1=1";
+        String sql = "1=1";
 
         if (id != null) {
-            sql+=" and id = " + id;
+            sql += " and id = " + id;
         }
         if (name != null) {
-            sql+=" and name = " + name;
+            sql += " and name like '%" + name + "%'";
         }
         if (phone != null) {
-            sql+=" and phone = " + phone;
+            sql += " and phone like '%" + phone + "%'";
         }
-        if (card != null) {
-            sql+=" and id_card = " + card;
+        if(card!=null){
+            if (card != null && !card.equals("无验证")) {
+                sql += " and id_card  like '%" + card + "%'";
+            }else if(card.equals("无验证")){
+                sql += " and id_card  is " + "null";
+            }
         }
         return sql;
     }

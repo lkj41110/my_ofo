@@ -64,7 +64,6 @@
 						class="caret"></b>
 				</a>
 					<ul class="dropdown-menu">
-						<li><a href="${pageContext.request.contextPath}/message/list?status=3">我的消息</a></li>
 						<li><a href="${pageContext.request.contextPath}/own/updatep">修改密码</a></li>
 						<li><a href="${pageContext.request.contextPath}/own/updatez">修改资料</a></li>
 						<li class="divider"></li>

@@ -81,6 +81,11 @@
         WHERE id=#{id}
     </select>
 
+    <select id="getDestroyBicycleList" resultType="DestroyBicycle">
+        SELECT *
+        FROM _destroy_bicycle
+    </select>
+
     <!-- 修改车辆 -->
     <update id="updateDestroyBicycle">
         UPDATE

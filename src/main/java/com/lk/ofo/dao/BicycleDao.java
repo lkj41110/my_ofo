@@ -91,4 +91,10 @@ public interface BicycleDao {
      * @return
      */
     int getCount();
+
+    /**
+     * 获取损坏车辆
+     * @return
+     */
+    List<DestroyBicycle> getDestroyBicycleList();
 }

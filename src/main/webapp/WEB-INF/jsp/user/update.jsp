@@ -1,76 +1,80 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
-<%@include file="/WEB-INF/jsp/common/tag.jsp"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@include file="/WEB-INF/jsp/common/tag.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
-<title>用户详情</title>
-<%@include file="/WEB-INF/jsp/common/head.jsp"%>
+    <title>用户详情</title>
+    <%@include file="/WEB-INF/jsp/common/head.jsp" %>
 </head>
 <body>
-	<%@include file="/WEB-INF/jsp/common/nav.jsp"%>
-	<div class="container">
-		<div class="panel panel-default">
-			<div class="panel-heading text-center">
-				<h2>用户详情</h2>
-			</div>
-			<div class="panel-body">
-				<form class="form-horizontal col-md-offset-2" role="form"
-					action="${pageContext.request.contextPath}/bicycle/update"
-					method="post">
-					<input type="hidden" name="createTime" value="${user.createTime}">
-					<div class="form-group">
-						<label for="firstname" class="col-sm-2 control-label">id</label>
-						<div class="col-sm-4">
-							<input type="text" class="form-control" id="id" name="id"
-								value="${user.id}" readonly="readonly">
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="lastname" class="col-sm-2 control-label">密码</label>
-						<div class="col-sm-4">
-							<input type="text" class="form-control" id="password" name="password"
-								value="${uer.password}">
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="lastname" class="col-sm-2 control-label">使用状况</label>
-						<div class="col-sm-4">
-							<select id="status" name="status" class="form-control selectpicker"
-								data-live-search="true">
-								<option value="1"
-									<c:if test="${bicycle.status==1}">selected = "selected"</c:if>>正在使用</option>
-								<option value="2"
-									<c:if test="${bicycle.status==2}">selected = "selected"</c:if>>出现故障</option>
-								<option value="3"
-									<c:if test="${bicycle.status==3}">selected = "selected"</c:if>>停止使用</option>
-								<option value="4"
-									<c:if test="${bicycle.status==4}">selected = "selected"</c:if>>未使用</option>
-							</select>
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="lastname" class="col-sm-2 control-label">创建时间</label>
-						<div class="col-sm-4">
-							<input type="text" class="form-control" id="createTime"
-								value="<fmt:formatDate value="${user.createTime}"
+<%@include file="/WEB-INF/jsp/common/nav.jsp" %>
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading text-center">
+            <h2>用户详情</h2>
+        </div>
+        <div class="panel-body">
+            <form class="form-horizontal col-md-offset-2" role="form"
+                  action="${pageContext.request.contextPath}/bicycle/update"
+                  method="post">
+                <input type="hidden" name="createTime" value="${user_d.createTime}">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">id</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="id" name="id"
+                               value="${user_d.id}" readonly="readonly">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">用户名</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="name" name="name"
+                               value="${user_d.name}" readonly="readonly">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">身份证</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="id_card" name="id_card"
+                               value="<c:if test="${user_d.idCard.length()>10}">${user_d.idCard}</c:if><c:if test="${user_d.idCard==null}">无验证</c:if>" readonly="readonly">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">性别</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="sex" name="sex"
+                               value="<c:if test="${user2_d.sex==null}">未设置</c:if><c:if test="${user2_d.sex==1}">男</c:if><c:if test="${user2_d.sex==0}">女</c:if>" readonly="readonly">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">爱好</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="hoppy" name="sex"
+                               value="<c:if test="${user2_d.hobby==null}">这个人很懒，什么都没留下</c:if><c:if test="${user2_d.hobby!=null}">${user2_d.hobby}</c:if>"
+                               readonly="readonly">
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">创建时间</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="createTime"
+                               value="<fmt:formatDate value="${user_d.createTime}"
 										pattern="yyyy-MM-dd HH:mm:ss" />"
-								readonly="readonly">
-							
-						</div>
-					</div>
-					<div class="form-group">
-						<a id="loginBtn" class="btn btn-success col-sm-offset-2 col-sm-4"
-							href="${pageContext.request.contextPath}/bicycle/detail?id=${bicycle.id}">地图查看</a>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-offset-3 col-sm-2">
-							<button type="submit" class="btn btn-default">修改</button>
-							<a class="btn btn-default" href="${pageContext.request.contextPath}/bicycle/list">返回</a>
-						</div>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+                               readonly="readonly">
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-2">
+                        <button type="submit" class="btn btn-default">修改</button>
+                        <a class="btn btn-default" href="${pageContext.request.contextPath}/bicycle/list">返回</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>

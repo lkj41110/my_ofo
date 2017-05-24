@@ -3,10 +3,7 @@ package com.lk.ofo.service.impl;
 import com.lk.ofo.dao.BicycleDao;
 import com.lk.ofo.dao.OrderDao;
 import com.lk.ofo.dao.UserDao;
-import com.lk.ofo.entity.Bicycle;
-import com.lk.ofo.entity.Order;
-import com.lk.ofo.entity.Page;
-import com.lk.ofo.entity.User;
+import com.lk.ofo.entity.*;
 import com.lk.ofo.entity.param.OrderParam;
 import com.lk.ofo.entity.vo.OrderGraphVO;
 import com.lk.ofo.enums.ConstantEnum;
@@ -18,10 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 import static com.lk.ofo.util.DateUtil.getMonthNumber;
 import static com.lk.ofo.util.DateUtil.getWeekday;
@@ -43,9 +37,9 @@ public class OrderServiceImpl implements OrderService {
         Page<Order> page = new Page<Order>();
         page.setCurrentIndex(offset);
         page.setPageSize(limit);
-        String sql=param.createQueryParam();
+        String sql = param.createQueryParam();
         page.setTotalNumber(orderDao.getCount(sql));
-        List list = orderDao.queryAllOrder((offset - 1) * limit, limit , sql);
+        List list = orderDao.queryAllOrder((offset - 1) * limit, limit, sql);
         page.setItems(list);
         return page;
     }
@@ -118,7 +112,7 @@ public class OrderServiceImpl implements OrderService {
         order.setEndTime(new Date());
         order.setUpdateTime(new Date());
         //计算价格
-        order.setCost(DateUtil.dateSubtractOfMin(order.getStartTime(), order.getEndTime())* ConstantEnum.PRICE);
+        order.setCost(DateUtil.dateSubtractOfMin(order.getStartTime(), order.getEndTime()) * ConstantEnum.PRICE);
         return orderDao.update(order);
     }
 
@@ -149,7 +143,7 @@ public class OrderServiceImpl implements OrderService {
         OrderGraphVO graphVO = new OrderGraphVO();
         int count = orderDao.getCount("1=1");
         //不同星期的数据
-        List<Order> orders = orderDao.queryAllOrder(0, count,"1=1");
+        List<Order> orders = orderDao.queryAllOrder(0, count, "1=1");
         int[] list = new int[7];
         for (Order order : orders) {
             Date date = order.getStartTime();
@@ -189,8 +183,62 @@ public class OrderServiceImpl implements OrderService {
             }
         }
         graphVO.setBicycles(Arrays.asList(ArrayUtils.toObject(bicycles)));
+        //图表5
+        graphVO.setdBicycle(graph5());
         return graphVO;
     }
+
+    private Map graph5() {
+        Map<String, Object> dBicycles = new HashMap<>(3);
+        List<String> list1 = new LinkedList<>();
+        List<int[]> list2 = new LinkedList<>();
+        List<Integer> list3 = new LinkedList<>();
+        //先取出损坏的车辆
+        List<DestroyBicycle> destroyBicycles = bicycleDao.getDestroyBicycleList();
+        Integer index = 0;
+        for (DestroyBicycle destroyBicycle : destroyBicycles) {
+            //保存损坏
+            list1.add(destroyBicycle.getId() + "");
+            list3.add(index);
+            int temp=index++;
+            List<Order> orders = orderDao.queryOrderByBicycle(destroyBicycle.getId());
+            for (Order order : orders) {
+                String id = order.getUserId() + "";
+                int index_user;
+                if(list1.contains(id)){
+                    index_user=list1.indexOf(id);
+                }else{
+                    list1.add(id);
+                    index_user=index++;
+                }
+                int[] temp2=new int[]{temp,index_user};
+                boolean flag=true;
+                int i;
+                for(i=0;i<list2.size();i++){
+                    int[] a=list2.get(i);
+                    if(!t_equals(a,temp2)){
+                        break;
+                    }
+                }
+                if(i>=list2.size()){
+                    list2.add(temp2);
+                }
+            }
+        }
+        dBicycles.put("1",list1);
+        dBicycles.put("2",list2);
+        dBicycles.put("3",list3);
+        return dBicycles;
+    }
+
+    private boolean t_equals(int[] a,int[] b){
+        if(a[0]!=b[0])
+            return true;
+        if(a[1]!=b[1])
+            return true;
+        return false;
+    }
+
 
     @Override
     public Integer getCount() {

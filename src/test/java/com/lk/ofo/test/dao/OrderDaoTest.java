@@ -22,50 +22,55 @@ import com.lk.ofo.entity.Order;
 @ContextConfiguration("classpath:spring/spring-dao.xml")
 public class OrderDaoTest {
 
-	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
+    private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
-	@Autowired
-	private OrderDao orderDao;
+    @Autowired
+    private OrderDao orderDao;
 
     @Autowired
     private ConstantDao constantDao;
 
-	@Test
-	public void queryAllOrder(){
-		List<Order> orders=orderDao.queryAllOrder(0,20,"1=1 and id = 1003");
-		LOG.info(orders.size()+" ");
-		LOG.info("-------------");
-	}
-	
-	@Test
-	public void queryOrder(){
-		Order orders=orderDao.queryOrderById(1000);
-		LOG.info(orders.toString());
-		LOG.info("-------------");
-	}
+    @Test
+    public void queryAllOrder() {
+        List<Order> orders = orderDao.queryAllOrder(0, 20, "1=1 and id = 1003");
+        LOG.info(orders.size() + " ");
+        LOG.info("-------------");
+    }
+
 
     @Test
-    public void getCount(){
-	    Integer a=orderDao.getCount("1=1");
+    public void queryOrder() {
+        Order orders = orderDao.queryOrderById(1000);
+        LOG.info(orders.toString());
+        List<Order> orders2 = orderDao.queryOrderByBicycle(1002);
+        LOG.info("-------------"+orders2.size()+"__");
+
+
+        LOG.info("-------------");
+    }
+
+    @Test
+    public void getCount() {
+        Integer a = orderDao.getCount("1=1");
         LOG.info(a.toString());
         LOG.info("-------------");
 
-        Integer[] b={1,2,3};
+        Integer[] b = {1, 2, 3};
         List list = Arrays.asList(b);
         LOG.info(a.toString());
     }
 
     @Test
-    public void getConstant(){
-        Constant constant=constantDao.getConstant();
-        LOG.info(constant.getCost1()+"");
-        LOG.info(constant.getCost2()+"");
-        LOG.info(constant.getCost3()+"");
+    public void getConstant() {
+        Constant constant = constantDao.getConstant();
+        LOG.info(constant.getCost1() + "");
+        LOG.info(constant.getCost2() + "");
+        LOG.info(constant.getCost3() + "");
     }
 
     @Test
-    public void setConstant(){
-        Constant constant=new Constant();
+    public void setConstant() {
+        Constant constant = new Constant();
         constant.setCost1(1);
         constant.setCost2(2);
         constant.setCost3(3);

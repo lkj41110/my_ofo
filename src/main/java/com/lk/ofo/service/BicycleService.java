@@ -97,4 +97,16 @@ public interface BicycleService {
      * @param constant
      */
     boolean setPrice(Constant constant);
+
+    /**
+     * 获取全部损坏
+     * @return
+     */
+    List<DestroyBicycle> getDestroyBicycleLists();
+
+    /**
+     * 获取价格
+     * @return
+     */
+    Constant getPrice();
 }

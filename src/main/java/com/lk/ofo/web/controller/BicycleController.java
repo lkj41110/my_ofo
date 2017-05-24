@@ -3,8 +3,8 @@ package com.lk.ofo.web.controller;
 import com.alibaba.fastjson.JSON;
 import com.lk.ofo.dto.BaseResult;
 import com.lk.ofo.entity.Bicycle;
+import com.lk.ofo.entity.DestroyBicycle;
 import com.lk.ofo.entity.Page;
-import com.lk.ofo.enums.ConstantEnum;
 import com.lk.ofo.exception.BizException;
 import com.lk.ofo.exception.ServiceException;
 import com.lk.ofo.service.BicycleService;
@@ -59,7 +59,7 @@ public class BicycleController {
         LOG.info("invoke----------/bicycle/list2");
         offset = offset == null ? 0 : offset;// 默认便宜0
         limit = limit == null ? 50 : limit;// 默认展示50条
-        List<Bicycle> list = bicycleService.getBicycleList(offset, limit, ConstantEnum.BICYCLE_WORING);
+        List<DestroyBicycle> list = bicycleService.getDestroyBicycleLists();
         model.addAttribute("bicyclelist2", list);
         return "bicycle/bicyclelist2";
     }

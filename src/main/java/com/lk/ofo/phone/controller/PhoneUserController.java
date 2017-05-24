@@ -1,8 +1,11 @@
 package com.lk.ofo.phone.controller;
 
+import com.lk.ofo.dao.BicycleDao;
 import com.lk.ofo.dto.BaseResult;
 import com.lk.ofo.entity.*;
 import com.lk.ofo.entity.param.OrderParam;
+import com.lk.ofo.entity.vo.BicyclesVO;
+import com.lk.ofo.entity.vo.MainVO;
 import com.lk.ofo.entity.vo.StartOrderVO;
 import com.lk.ofo.entity.vo.UserVO;
 import com.lk.ofo.exception.ServiceException;
@@ -37,6 +40,9 @@ public class PhoneUserController {
 
     @Autowired
     ActivityService activityService;
+
+    @Autowired
+    BicycleDao bicycleDao;
 
     @RequestMapping(path = "/login", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
@@ -257,8 +263,14 @@ public class PhoneUserController {
     @ResponseBody
     public BaseResult<Object> getActivityList(String phone, String password) {
         LOG.info("invoke----------/phone/activity/activitylist---***");
+        MainVO mainVO=new MainVO();
         List<Activity> list=activityService.getActivityList();
-        return new BaseResult<Object>(true, list);
+        mainVO.setActivity(list);
+        int offset=1;
+        int limit=10;
+        List list1 = bicycleDao.queryAllBicycle((offset - 1) * limit, limit);
+        mainVO.setList(list1);
+        return new BaseResult<Object>(true, mainVO);
     }
 
     @RequestMapping(path = "/order/getOrders", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})

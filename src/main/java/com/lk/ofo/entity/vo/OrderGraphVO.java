@@ -1,6 +1,7 @@
 package com.lk.ofo.entity.vo;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author lkj41110
@@ -11,6 +12,7 @@ public class OrderGraphVO{
     private List<Double> monney;
     private List<Integer> months;
     private List<Integer> bicycles;
+    private Map<String,Object> dBicycle;
 
     public List<Integer> getWeek() {
         return week;
@@ -42,5 +44,13 @@ public class OrderGraphVO{
 
     public void setBicycles(List<Integer> bicycles) {
         this.bicycles = bicycles;
+    }
+
+    public Map<String, Object> getdBicycle() {
+        return dBicycle;
+    }
+
+    public void setdBicycle(Map<String, Object> dBicycle) {
+        this.dBicycle = dBicycle;
     }
 }

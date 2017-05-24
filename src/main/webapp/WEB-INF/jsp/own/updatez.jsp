@@ -40,11 +40,11 @@
                     <div class="col-sm-4">
                         <select id="sex" name="sex" class="form-control selectpicker"
                                 data-live-search="true">
-                            <option value="1"
-                                    <c:if test="${userVO.sex}">selected="selected"</c:if>>男
+                            <option value="0"
+                                    <c:if test="${userVO.sex==0}">selected="selected"</c:if>>男
                             </option>
-                            <option value="2"
-                                    <c:if test="${userVO.sex}">selected="selected"</c:if>>女
+                            <option value="1"
+                                    <c:if test="${userVO.sex==1}">selected="selected"</c:if>>女
                             </option>
                         </select>
                     </div>
@@ -57,6 +57,23 @@
                         <input type="text" class="form-control" id="hobby" name="hobby"
                                value="${userVO.hobby}"
                         >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">电话</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="phone" name="phone"
+                               value="${userVO.phone}" readonly="readonly"
+                        >
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">身份证</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="id_card" name="id_card"
+                               value="<c:if test="${user.idCard.length()>10}">${user.idCard}</c:if>
+                            <c:if test="${user.idCard==null}">无验证</c:if>" readonly="readonly">
                     </div>
                 </div>
                 <div class="form-group">

@@ -26,7 +26,6 @@ public interface UserDao {
     List<User> queryAllUser(@Param("offset") int offset, @Param("limit") int limit, @Param("param") String sql);
 
 
-
     /**
      * 通过id找用户
      *
@@ -50,6 +49,7 @@ public interface UserDao {
 
     /**
      * 修改用户资料
+     *
      * @param user
      * @return
      */
@@ -61,4 +61,10 @@ public interface UserDao {
      * @return
      */
     Integer getCount(@Param("param") String sql);
+
+    /**
+     * 添加用户
+     * @param user2
+     */
+    void addUser2(User2 user2);
 }

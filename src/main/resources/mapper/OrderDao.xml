@@ -15,6 +15,13 @@
 		WHERE id=#{id}
 	</select>
 
+
+    <select id="queryOrderByBicycle" resultType="Order">
+        SELECT *
+        FROM _order
+        WHERE bicycle_id=#{id}
+    </select>
+
     <insert id="add" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO
   		_order (user_id, bicycle_id, start_time, start_X, start_y, status)

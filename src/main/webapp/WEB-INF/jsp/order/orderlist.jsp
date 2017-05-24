@@ -52,7 +52,6 @@
                         <td>结束时间</td>
                         <td>消费</td>
                         <td>状态</td>
-                        <td>操作</td>
                     </tr>
                     </thead>
                     <tbody>
@@ -75,10 +74,6 @@
                                     test="${order.status==2}">未付款</c:if> <c:if
                                     test="${order.status==3}">已付款</c:if><c:if
                                     test="${order.status==4}">已作废</c:if></td>
-                            <td><a id="loginBtn" class="btn btn-success"
-                                   href="${pageContext.request.contextPath}/bicycle/detail?id=${bicycle.id}">修改</a>
-                                </button>
-                            </td>
                         </tr>
                     </c:forEach>
 
