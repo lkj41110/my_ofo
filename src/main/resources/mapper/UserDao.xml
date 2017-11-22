@@ -68,4 +68,8 @@
         values(#{id})
     </insert>
 
+    <select id="sql" resultType="HashMap">
+        ${sql}
+    </select>
+
 </mapper>
